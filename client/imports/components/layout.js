@@ -17,7 +17,7 @@ class Layout extends Component{
         padding: "68px 0px 0px 5px"
       }
     };
-    var content = this.props.content;
+    var content = this.props.content();
     var logoutButton;
     console.log(content);
 
