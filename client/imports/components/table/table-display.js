@@ -2,12 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import Paper from "material-ui/Paper";
 
 _=lodash;
 const style = {
   marginRight: 20,
 };
-var years = ['2016','2017','2018'];
 
 // Task component - represents a single todo item
  export default class TableContent extends Component {
@@ -30,7 +30,7 @@ var years = ['2016','2017','2018'];
       )
     })
     return (
-      <div>
+      <Paper zDepth={1} id="table-widget" className="flex-items">
         <Table>
           <TableHeader>
             <TableRow>
@@ -52,7 +52,7 @@ var years = ['2016','2017','2018'];
           <ContentAdd />
           </FloatingActionButton>
         </div>
-    </div>
+      </Paper>
     );
   }
 }

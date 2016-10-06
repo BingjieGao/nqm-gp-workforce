@@ -1,5 +1,7 @@
 import React from "react";
 import TableContainer from "./table-container";
+import TableControl from "../tableControl/tableControl";
+import {TableCalculator} from "../../functions/tableCalculator";
 
 class TableWidget extends React.Component {
 
@@ -8,9 +10,10 @@ class TableWidget extends React.Component {
     var widget_data = this.props.data;
     var tableId = "first";
     var tablename = "first table";
-
     return (
-      <TableContainer tableId={tableId} tablename={tablename} />
+      <div className="flex-container">
+        <TableContainer tableId={tableId} tablename={tablename} />
+      </div>
     );
   }
 

@@ -8,4 +8,19 @@ html, body {
 
 .container{
   display:flex;
+  width:100%;
+}
+
+.flex-container{
+  background-color:transparent;
+  padding: 10px;
+}
+.flex-items{
+  background-color: transparent;
+  box-sizing: border-box;
+  -wekit-order:1;
+  order:1;
+}
+#table-widget{
+  width:60%;
 }
