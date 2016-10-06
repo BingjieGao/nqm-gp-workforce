@@ -13,14 +13,31 @@ html, body {
 
 .flex-container{
   background-color:transparent;
+  margin: 0;
+  list-style: none;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
   padding: 10px;
 }
 .flex-items{
   background-color: transparent;
   box-sizing: border-box;
-  -wekit-order:1;
-  order:1;
 }
 #table-widget{
   width:60%;
+  -wekit-order:1;
+  order:1;
+}
+#calculated-widget{
+  width:35%;
+  padding:10px;
+  -wekit-order:2;
+  order:2;
 }

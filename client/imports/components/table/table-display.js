@@ -3,6 +3,7 @@ import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColu
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import Paper from "material-ui/Paper";
+import TableControl from "../tableControl/tableControl"
 
 _=lodash;
 const style = {
@@ -30,6 +31,7 @@ const style = {
       )
     })
     return (
+      <div className="flex-container">
       <Paper zDepth={1} id="table-widget" className="flex-items">
         <Table>
           <TableHeader>
@@ -53,6 +55,8 @@ const style = {
           </FloatingActionButton>
         </div>
       </Paper>
+      <TableControl TableData={this.props.TableData}/>
+    </div>
     );
   }
 }

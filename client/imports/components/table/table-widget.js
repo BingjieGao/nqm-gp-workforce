@@ -11,9 +11,7 @@ class TableWidget extends React.Component {
     var tableId = "first";
     var tablename = "first table";
     return (
-      <div className="flex-container">
         <TableContainer tableId={tableId} tablename={tablename} />
-      </div>
     );
   }
 

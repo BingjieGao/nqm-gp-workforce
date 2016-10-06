@@ -1,5 +1,5 @@
 import connectionManager from "../connection-manager";
-import {tableCalculator} from "../functions/tableCalculator"
+
 function loadTableData({tableId,tablename},onData){
   console.log('tableid is '+tableId);
   console.log('tablename is '+tablename);
@@ -27,10 +27,8 @@ function loadTableData({tableId,tablename},onData){
         '2018':16
       }
     }
-  ];
-  console.log(tableCalculator);
-  var tableResult = tableCalculator(data);
-  console.log(tableResult);
+  ]
+
   onData(null,{TableData:data});
 }
 
