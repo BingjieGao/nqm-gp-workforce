@@ -7,23 +7,26 @@ _=lodash;
 const style = {
   marginRight: 20,
 };
+var years = ['2016','2017','2018'];
 
 // Task component - represents a single todo item
  export default class TableContent extends Component {
+
+   addRow(){
+     console.log('click');
+   }
   render() {
     var tabledata = _.map(this.props.TableData,function(row){
-      console.log(row);
       return (
         <TableRow key={row._id}>
             <TableRowColumn>{row._id}</TableRowColumn>
-            <TableRowColumn>{row.age_band}</TableRowColumn>
-            <TableRowColumn>{row.area_name}</TableRowColumn>
+            <TableRowColumn>{row.name}</TableRowColumn>
+            <TableRowColumn>{row.age}</TableRowColumn>
             <TableRowColumn>{row.gender}</TableRowColumn>
-            <TableRowColumn>{row.persons}</TableRowColumn>
-            <TableRowColumn>{row.popId}</TableRowColumn>
-            <TableRowColumn>{row.popId_decription}</TableRowColumn>
-            <TableRowColumn>{row.year}</TableRowColumn>
-          </TableRow>
+            <TableRowColumn>{row.hours['2016']}</TableRowColumn>
+            <TableRowColumn>{row.hours['2017']}</TableRowColumn>
+            <TableRowColumn>{row.hours['2018']}</TableRowColumn>
+        </TableRow>
       )
     })
     return (
@@ -32,13 +35,12 @@ const style = {
           <TableHeader>
             <TableRow>
               <TableHeaderColumn>_id</TableHeaderColumn>
-              <TableHeaderColumn>Age Band</TableHeaderColumn>
-              <TableHeaderColumn>Area Name</TableHeaderColumn>
+              <TableHeaderColumn>Name</TableHeaderColumn>
+              <TableHeaderColumn>Age</TableHeaderColumn>
               <TableHeaderColumn>Gender</TableHeaderColumn>
-              <TableHeaderColumn>Persons</TableHeaderColumn>
-              <TableHeaderColumn>PopId</TableHeaderColumn>
-              <TableHeaderColumn>popId_decription</TableHeaderColumn>
-              <TableHeaderColumn>Year</TableHeaderColumn>
+              <TableHeaderColumn>No. of Hours 2016</TableHeaderColumn>
+              <TableHeaderColumn>No. of Hours 2017</TableHeaderColumn>
+              <TableHeaderColumn>No. of Hours 2018</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -46,7 +48,7 @@ const style = {
           </TableBody>
         </Table>
         <div>
-          <FloatingActionButton style={style} onClick={this.addRow()}>
+          <FloatingActionButton style={style} onClick={this.addRow}>
           <ContentAdd />
           </FloatingActionButton>
         </div>

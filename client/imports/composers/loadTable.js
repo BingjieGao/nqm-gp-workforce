@@ -7,25 +7,25 @@ function loadTableData({tableId,tablename},onData){
   var data = [
     {
       _id:1,
-      age_band:"0-4",
-      area_id:'E06000046',
-      area_name:'Isle of Wight',
-      gender:'female',
-      persons:3200,
-      popId:'ONS',
-      popId_decription:'ONS projection',
-      year:'2016'
+      name:"First GP",
+      age:30,
+      gender:'male',
+      hours:{
+        '2016':10,
+        '2017':11,
+        '2018':10
+      }
     },
     {
       _id:2,
-      age_band:"0-4",
-      area_id:'E06000046',
-      area_name:'Isle of Wight',
+      name:"Second GP",
+      age:40,
       gender:'male',
-      persons:3200,
-      popId:'ONS',
-      popId_decription:'ONS projection',
-      year:'2016'
+      hours:{
+        '2016':20,
+        '2017':13,
+        '2018':16
+      }
     }
   ];
   onData(null,{TableData:data});
