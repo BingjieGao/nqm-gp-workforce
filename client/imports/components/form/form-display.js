@@ -22,6 +22,7 @@ const styles = {
      };
      this._handleGender = this._handleGender.bind(this);
      this._handleName = this._handleName.bind(this);
+     this._handleAge = this._handleAge.bind(this);
    }
 
     _handleGender(event,index,value){
@@ -32,18 +33,22 @@ const styles = {
     }
     _handleName(event,index,value){
       this.setState({
-        name: value
+        name: event.target.value
       });
       console.log(this.state);
     }
-    _handleAge(event,index,value){
+    _handleAge(event){
       this.setState({
-        gender: value
+        age: event.target.value
       });
       console.log(this.state);
     }
      onsubmit(){
        console.log('submit');
+     }
+
+     getValues() {
+       return this.state;
      }
 
   render() {
@@ -53,7 +58,7 @@ const styles = {
           value={this.state.name}
           errorText="This field is required"
           floatingLabelText="Name"
-          onChange={this._handlName}
+          onChange={this._handleName}
         /><br />
       <SelectField value={this.state.gender} onChange={this._handleGender} floatingLabelText="Gender">
           <MenuItem value={1} primaryText="Male" />
