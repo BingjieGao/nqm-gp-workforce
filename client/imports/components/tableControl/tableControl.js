@@ -15,7 +15,7 @@ import {tableCalculator} from "../../functions/tableCalculator"
      return(
        <Paper id="calculated-widget"zDepth={1} className="flex-items">
           <h2>Total Hours: {totalHours}</h2>
-          <h3>Sum</h3>
+          <h2>Sum: {sum}</h2>
        </Paper>
      )
 
