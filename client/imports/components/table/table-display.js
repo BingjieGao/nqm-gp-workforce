@@ -4,6 +4,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import Paper from "material-ui/Paper";
 import TableControl from "../tableControl/tableControl"
+import DialogForm from "../dialog/dialog-widget"
 
 _=lodash;
 const style = {
@@ -49,11 +50,7 @@ const style = {
               {tabledata}
           </TableBody>
         </Table>
-        <div>
-          <FloatingActionButton style={style} onClick={this.addRow}>
-          <ContentAdd />
-          </FloatingActionButton>
-        </div>
+        <DialogForm />
       </Paper>
       <TableControl TableData={this.props.TableData}/>
     </div>
