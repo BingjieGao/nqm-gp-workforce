@@ -10,20 +10,21 @@ export default class DialogForm extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
+      open: true,
     }
     this._handleOpen = this._handleOpen.bind(this);
     this._handleClose = this._handleClose.bind(this);
   }
     _handleOpen() {
+
       this.setState({open: true});
     }
     _handleClose() {
+      console.log(this._dialogContent._handleAge());
       this.setState({open: false});
     }
 
   render(){
-    console.log(GPForm.state);
     const actions = [
       <FlatButton
         label="Cancel"
@@ -48,7 +49,7 @@ export default class DialogForm extends Component{
          open={this.state.open}
          onRequestClose={this.handleClose}
        >
-        <GPForm />
+        <GPForm ref={c => this._dialogContent = c }/>
        </Dialog>
      </div>
     )

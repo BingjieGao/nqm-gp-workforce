@@ -23,6 +23,7 @@ const styles = {
      this._handleGender = this._handleGender.bind(this);
      this._handleName = this._handleName.bind(this);
      this._handleAge = this._handleAge.bind(this);
+     this.getValues = this.getValues.bind(this);
    }
 
     _handleGender(event,index,value){
@@ -43,12 +44,8 @@ const styles = {
       });
       console.log(this.state);
     }
-     onsubmit(){
-       console.log('submit');
-     }
-
      getValues() {
-       return this.state;
+       return this.getDOMNode().value;
      }
 
   render() {
