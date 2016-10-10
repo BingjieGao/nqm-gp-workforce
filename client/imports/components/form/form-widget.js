@@ -5,7 +5,6 @@ import FormContainer from "./form-container";
 class FormWidget extends React.Component {
 
   render() {
-    console.log('form-widget');
     console.log(<FormContainer />)
     return (
       <FormContainer />

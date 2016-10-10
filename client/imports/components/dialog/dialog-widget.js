@@ -3,25 +3,29 @@ import Dialog from "material-ui/Dialog";
 import FlatButton from "material-ui/FlatButton";
 import RaisedButton from "material-ui/RaisedButton";
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import GPForm from "../form/form-widget"
+import GPForm from "../form/form-display"
 
 export default class DialogForm extends Component{
 
   constructor(props) {
     super(props);
     this.state = {
-      open: true,
+      open: false,
     }
     this._handleOpen = this._handleOpen.bind(this);
     this._handleClose = this._handleClose.bind(this);
+    this._handleSubmit = this._handleSubmit.bind(this);
   }
     _handleOpen() {
-
       this.setState({open: true});
     }
     _handleClose() {
-      console.log(this._dialogContent._handleAge());
+      //console.log(this.refs.dialogContent.getValues());
       this.setState({open: false});
+    }
+    _handleSubmit() {
+      console.log(this.refs.dialogContent.getValues());
+      this.setState({open : false});
     }
 
   render(){
@@ -35,7 +39,7 @@ export default class DialogForm extends Component{
         label="Submit"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this._handleClose}
+        onTouchTap={this._handleSubmit}
       />
     ];
 
@@ -49,7 +53,7 @@ export default class DialogForm extends Component{
          open={this.state.open}
          onRequestClose={this.handleClose}
        >
-        <GPForm ref={c => this._dialogContent = c }/>
+        <GPForm ref="dialogContent"/>
        </Dialog>
      </div>
     )
