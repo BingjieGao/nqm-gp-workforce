@@ -26,6 +26,7 @@ export default class DialogForm extends Component{
     _handleSubmit() {
       console.log(this.refs.dialogContent.getValues());
       this.setState({open : false});
+      this.props.onFormSubmit(this.refs.dialogContent.getValues());
     }
 
   render(){

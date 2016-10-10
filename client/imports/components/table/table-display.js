@@ -3,8 +3,8 @@ import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColu
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import Paper from "material-ui/Paper";
-import TableControl from "../tableControl/tableControl"
-import DialogForm from "../dialog/dialog-widget"
+import TableControl from "../controls/tableControl"
+import DialogForm from "../dialog/dialog-display"
 
 _=lodash;
 const style = {
@@ -13,12 +13,32 @@ const style = {
 
 // Task component - represents a single todo item
  export default class TableContent extends Component {
+   constructor(props) {
+     super(props);
+     this.state = {
+       gpList: this.props.TableData
+     };
+     this._addRow = this._addRow.bind(this);
+   }
 
-   addRow(){
-     console.log('click');
+   _addRow(newInfo){
+     console.log(newInfo);
+     newInfo.gender = newInfo.gender==1?'male':'female';
+     newInfo = _.assign(newInfo,{
+       _id: this.state.gpList.length+1,
+       hours:{
+         '2016':10,
+         '2017':13,
+         '2018':10
+       }
+     });
+
+     this.setState({
+       gpList: this.state.gpList.concat(newInfo)
+     });
    }
   render() {
-    var tabledata = _.map(this.props.TableData,function(row){
+    var tabledata = _.map(this.state.gpList,function(row){
       return (
         <TableRow key={row._id}>
             <TableRowColumn>{row._id}</TableRowColumn>
@@ -50,9 +70,9 @@ const style = {
               {tabledata}
           </TableBody>
         </Table>
-        <DialogForm />
+        <DialogForm onFormSubmit={this._addRow}/>
       </Paper>
-      <TableControl TableData={this.props.TableData}/>
+      <TableControl TableData={this.state.gpList}/>
     </div>
     );
   }

@@ -11,6 +11,7 @@ class ConnectionManager {
     this.authenticated = new ReactiveVar(false);
     this.resourceCollection = this.datasetDataCollection = null;
     this.authToken = "";
+    this.authorise("SklzMJbZC","12345");
   }
   connect() {
     if (this.connected) {

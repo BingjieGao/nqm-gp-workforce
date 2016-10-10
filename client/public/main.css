@@ -7,7 +7,6 @@ html, body {
 }
 
 .container{
-  display:flex;
   width:100%;
 }
 
@@ -32,12 +31,23 @@ html, body {
 }
 #table-widget{
   width:60%;
-  -wekit-order:1;
+  -webkit-order:1;
   order:1;
 }
 #calculated-widget{
   width:35%;
   padding:10px;
-  -wekit-order:2;
+  -webkit-order:2;
   order:2;
+}
+#pyramid-widget{
+  width:50%;
+  order:1;
+  -webkit-order:1;
+}
+#input-widget{
+  padding:10px;
+  width: 45%;
+  order:2;
+  -webkit-order:2;
 }

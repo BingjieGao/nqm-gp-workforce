@@ -1,7 +1,6 @@
 import React from "react";
 import TableContainer from "./table-container";
-import TableControl from "../tableControl/tableControl";
-import {TableCalculator} from "../../functions/tableCalculator";
+import TableControl from "../controls/tableControl"
 
 class TableWidget extends React.Component {
 
