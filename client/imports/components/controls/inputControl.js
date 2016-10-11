@@ -5,6 +5,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import Paper from "material-ui/Paper";
 import TextField from "material-ui/TextField";
 import { Meteor } from "meteor/meteor";
+import YAxisControl from "./yAxisControl"
 _=lodash;
 
  export default class InputControl extends Component{
@@ -16,6 +17,7 @@ _=lodash;
      }
      this._handleFemale = this._handleFemale.bind(this);
      this._handleMale = this._handleMale.bind(this);
+     this.renderYAxis = this.renderYAxis.bind(this);
 
    }
    _handleFemale(event){
@@ -46,7 +48,11 @@ _=lodash;
       });
       this.props.onMaleChange(TempList);
    }
-
+   renderYAxis() {
+     return(
+       <YAxisControl />
+     )
+   }
    render(){
      var self = this;
      var femaleDisplay =  _.map(this.state.femaleList,function(row){
@@ -75,6 +81,7 @@ _=lodash;
               />
          )
        })
+       console.log(this.renderYAxis());
 
      return(
        <Paper id="input-widget" zDepth={1} className="flex-items">
@@ -82,6 +89,9 @@ _=lodash;
         <div className="input-container">
           <div className="input-itmes" id="male-inputs">
             {maleDisplay}
+          </div>
+          <div className="input-items" id="yAxis-inputs">
+            {this.renderYAxis()}
           </div>
           <div className="input-itmes" id="female-inputs">
             {femaleDisplay}

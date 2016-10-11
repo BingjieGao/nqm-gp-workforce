@@ -200,6 +200,17 @@ class PyramidDisplay extends Component {
     this.draw(nextProps);
   }
 
+  renderInputs(){
+    return (
+      <InputControl
+        ArrayMale={this.state.maleList}
+        ArrayFemale={this.state.femaleList}
+        onFemaleChange={this._handleFemaleChange}
+        onMaleChange={this._handleMaleChange}
+        />
+    )
+  }
+
   render() {
     const styles = {
       root: {
@@ -214,12 +225,7 @@ class PyramidDisplay extends Component {
             <svg id={"pyramid" + this.props.wgtId}></svg>
           </div>
         </Paper>
-        <InputControl
-          ArrayMale={this.state.maleList}
-          ArrayFemale={this.state.femaleList}
-          onFemaleChange={this._handleFemaleChange}
-          onMaleChange={this._handleMaleChange}
-          />
+          {this.renderInputs()}
       </div>
     );
   }

@@ -33,6 +33,19 @@ html, body {
   background-color: transparent;
   box-sizing: border-box;
 }
+.yaxis-labels{
+  height:48px;
+  line-height:48px;
+  font-family: Roboto, sans-serif;
+  font-size:16px;
+  text-align: center;
+vertical-align: middle;
+}
+.yaxis-labels> p{
+  -webkit-margin-before: 0px;
+  -webkit-margin-after: 0px;
+}
+
 #table-widget{
   width:60%;
   -webkit-order:1;
@@ -56,17 +69,17 @@ html, body {
   -webkit-order:2;
 }
 #male-inputs{
-  width:50%;
+  width:40%;
   order:1;
   -webkit-order:1
 }
 #yAxis-inputs{
-  width:33%;
+  width:19%;
   order:2;
   -webkit-order:2;
 }
 #female-inputs{
-  width:50%;
+  width:40%;
   order:3;
   -webkit-order:3;
 }
