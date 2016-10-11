@@ -58,7 +58,6 @@ class PyramidDisplay extends Component {
         if(data['persons']>maxValue)
           maxValue = data['persons'];
     });
-    console.log(maxValue);
     // Elements
     let svg = d3.select('#pyramid' + props.wgtId);
     let leftBarGroup = svg.select("#leftBarGroup" + props.wgtId);

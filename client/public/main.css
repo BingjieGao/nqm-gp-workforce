@@ -10,7 +10,7 @@ html, body {
   width:100%;
 }
 
-.flex-container{
+.flex-container,.input-container{
   background-color:transparent;
   margin: 0;
   list-style: none;
@@ -26,6 +26,10 @@ html, body {
   padding: 10px;
 }
 .flex-items{
+  background-color: transparent;
+  box-sizing: border-box;
+}
+.input-items{
   background-color: transparent;
   box-sizing: border-box;
 }
@@ -50,4 +54,19 @@ html, body {
   width: 45%;
   order:2;
   -webkit-order:2;
+}
+#male-inputs{
+  width:50%;
+  order:1;
+  -webkit-order:1
+}
+#yAxis-inputs{
+  width:33%;
+  order:2;
+  -webkit-order:2;
+}
+#female-inputs{
+  width:50%;
+  order:3;
+  -webkit-order:3;
 }

@@ -17,10 +17,6 @@ class PyramidWidget extends React.Component {
       age_bands = Meteor.settings.public.age_bands;
     }
 
-    console.log('wgtid '+this.props.wgtId);
-    console.log(this.props.width);
-    //console.log(filter);
-
     return(
 
           <PyramidContainer wgtId={this.props.wgtId}

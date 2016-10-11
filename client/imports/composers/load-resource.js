@@ -17,9 +17,10 @@ function loadResourceData({resourceId, filter, options}, onData) {
       let femaleList = [];
       let totalPop = 0;
       //console.log(response.data);
-      _.forEach(response.data, function(data){
+      _.forEach(response.data, function(data,index){
         if (data.age_band == "All Ages") totalPop += data.persons;
         else {
+          data._id = index;
           if (data.gender == "male") maleList.push(data);
           else femaleList.push(data);
         }

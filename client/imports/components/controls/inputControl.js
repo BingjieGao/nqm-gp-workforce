@@ -16,13 +16,14 @@ _=lodash;
      }
      this._handleFemale = this._handleFemale.bind(this);
      this._handleMale = this._handleMale.bind(this);
+
    }
    _handleFemale(event){
      let TempList  = [];
      TempList = TempList.concat(this.state.femaleList);
      _.forEach(TempList,function(TempObj){
        if(TempObj['age_band'] == event.target.name){
-        TempObj['persons'] = event.target.value;
+        TempObj['persons'] = Number(event.target.value);
       }
      })
 
@@ -47,25 +48,44 @@ _=lodash;
    }
 
    render(){
+     var self = this;
+     var femaleDisplay =  _.map(this.state.femaleList,function(row){
+       let tempId = "female"+row['_id'];
+        return(
+            <TextField
+              key={row['_id']}
+              id={tempId}
+              type="number"
+              value={row['persons']}
+              onChange={self._handleFemale}
+              name={row['age_band']}
+            />
+        )
+      })
+      var maleDisplay =  _.map(this.state.maleList,function(row){
+        let tempId = "female"+row['_id'];
+         return(
+              <TextField
+                key={row['_id']}
+                id={tempId}
+                type="number"
+                value={row['persons']}
+                onChange={self._handleMale}
+                name={row['age_band']}
+              />
+         )
+       })
 
      return(
        <Paper id="input-widget" zDepth={1} className="flex-items">
         <h3>Input fields </h3>
-        <div>
-          <TextField
-            type="number"
-            value={this.state.maleList[0]['persons']}
-            errorText="This field is required"
-            onChange={this._handleMale}
-            name={this.state.maleList[0]['age_band']}
-          /><br />
-          <TextField
-            type="number"
-            value={this.state.femaleList[0]['persons']}
-            errorText="This field is required"
-            onChange={this._handleFemale}
-            name={this.state.femaleList[0]['age_band']}
-          /><br />
+        <div className="input-container">
+          <div className="input-itmes" id="male-inputs">
+            {maleDisplay}
+          </div>
+          <div className="input-itmes" id="female-inputs">
+            {femaleDisplay}
+          </div>
         </div>
        </Paper>
      )
