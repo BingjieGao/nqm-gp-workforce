@@ -18,7 +18,6 @@ class PyramidDisplay extends Component {
       },
       femaleList: this.props.femaleList,
       maleList: this.props.maleList,
-      maxValue: this.props.maxValue
     };
     this.state.width = props.width - sideMargin*2;
     this.state.height = props.height - this.state.margin.top - this.state.margin.bottom;
@@ -27,16 +26,39 @@ class PyramidDisplay extends Component {
     this.state.pointB = this.state.width - this.state.regionWidth;
 
     this.draw = this.draw.bind(this);
+
+    this._handleFemaleChange = this._handleFemaleChange.bind(this);
+    this._handleMaleChange = this._handleMaleChange.bind(this);
   }
+  _handleFemaleChange(newFemaleList){
+    this.setState({
+      femaleList: newFemaleList,
+    },function(){
+      this.draw(this.props);
+    })
+  };
+  _handleMaleChange(newMaleList){
+    this.setState({
+      maleList: newMaleList,
+    },function(){
+      this.draw(this.props);
+    });
+  };
 
   translation(x,y) {
     return 'translate(' + x + ',' + y + ')';
   }
   draw(props) {
-    let maxValue = this.state.maxValue;
-    let males = this.state.maleList;
     let females = this.state.femaleList;
-
+    let males = this.state.maleList;
+    let maxValue = 0;
+    var allData = females.concat(males);
+    //console.log(allData);
+    _.forEach(allData, function(data){
+        if(data['persons']>maxValue)
+          maxValue = data['persons'];
+    });
+    console.log(maxValue);
     // Elements
     let svg = d3.select('#pyramid' + props.wgtId);
     let leftBarGroup = svg.select("#leftBarGroup" + props.wgtId);
@@ -193,7 +215,12 @@ class PyramidDisplay extends Component {
             <svg id={"pyramid" + this.props.wgtId}></svg>
           </div>
         </Paper>
-        <InputControl ArrayMale={this.state.maleList} ArrayFemale={this.state.femaleList}/>
+        <InputControl
+          ArrayMale={this.state.maleList}
+          ArrayFemale={this.state.femaleList}
+          onFemaleChange={this._handleFemaleChange}
+          onMaleChange={this._handleMaleChange}
+          />
       </div>
     );
   }
@@ -204,7 +231,7 @@ PyramidDisplay.propTypes = {
   data: React.PropTypes.array.isRequired,
   femaleList: PropTypes.array.isRequired,
   maleList: PropTypes.array.isRequired,
-  maxValue: PropTypes.number.isRequired,
+  totalPop: PropTypes.number.isRequired,
   wgtId: React.PropTypes.string.isRequired,
   age_bands: React.PropTypes.array.isRequired,
   male: React.PropTypes.bool.isRequired,

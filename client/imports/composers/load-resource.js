@@ -15,13 +15,11 @@ function loadResourceData({resourceId, filter, options}, onData) {
     else {
       let maleList = [];
       let femaleList = [];
-      let maxValue = 0;
       let totalPop = 0;
-      console.log(response.data);
+      //console.log(response.data);
       _.forEach(response.data, function(data){
         if (data.age_band == "All Ages") totalPop += data.persons;
         else {
-          if (data.persons > maxValue) maxValue = data.persons;
           if (data.gender == "male") maleList.push(data);
           else femaleList.push(data);
         }
@@ -32,7 +30,7 @@ function loadResourceData({resourceId, filter, options}, onData) {
       femaleList.sort(function(a,b) {
         return b.age_band.replace(/(^\d+)(.+$)/i,'$1') - a.age_band.replace(/(^\d+)(.+$)/i,'$1');
       });
-      onData(null, {data: response.data,maleList:maleList,femaleList:femaleList,maxValue:maxValue});
+      onData(null, {data: response.data,maleList:maleList,femaleList:femaleList,totalPop:totalPop});
     }
   });
 }

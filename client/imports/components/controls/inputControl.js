@@ -12,42 +12,59 @@ _=lodash;
      super(props);
      this.state = {
        femaleList: props.ArrayFemale,
-       maleList: props.ArrayMale
+       maleList: props.ArrayMale,
      }
-     //this._handleInputs = this._handleInputs.bind(this);
+     this._handleFemale = this._handleFemale.bind(this);
+     this._handleMale = this._handleMale.bind(this);
    }
-   _handleInputs(arrayIndex,event){
-     console.log(this.state.femaleList);
+   _handleFemale(event){
      let TempList  = [];
      TempList = TempList.concat(this.state.femaleList);
-     TempList[arrayIndex]['persons'] = event.target.value;
+     _.forEach(TempList,function(TempObj){
+       if(TempObj['age_band'] == event.target.name){
+        TempObj['persons'] = event.target.value;
+      }
+     })
+
       this.setState({
-        femaleList: TempList
+        femaleList: TempList,
       });
+
+      this.props.onFemaleChange(TempList);
+   }
+   _handleMale(event){
+     let TempList  = [];
+     TempList = TempList.concat(this.state.maleList);
+     _.forEach(TempList,function(TempObj){
+       if(TempObj['age_band'] == event.target.name)
+        TempObj['persons'] = Number(event.target.value);
+     })
+
+      this.setState({
+        maleList: TempList
+      });
+      this.props.onMaleChange(TempList);
    }
 
    render(){
-     console.log(this.state.femaleList[0]);
-     var female_array = this.state.femaleList;
+
      return(
        <Paper id="input-widget" zDepth={1} className="flex-items">
         <h3>Input fields </h3>
         <div>
           <TextField
-            id="text-field-controlled"
-            value={this.state.femaleList[0]['persons']}
-            errorText="This field is required"
-            floatingLabelText="Name"
-            onChange={this._handleInputs.bind(0,this)}
-            name={this.state.femaleList[0]['age_band']}
-          /><br />
-          <TextField
-            id="text-field-controlled"
+            type="number"
             value={this.state.maleList[0]['persons']}
             errorText="This field is required"
-            floatingLabelText="Name"
-            onChange={this._handleInputs}
+            onChange={this._handleMale}
             name={this.state.maleList[0]['age_band']}
+          /><br />
+          <TextField
+            type="number"
+            value={this.state.femaleList[0]['persons']}
+            errorText="This field is required"
+            onChange={this._handleFemale}
+            name={this.state.femaleList[0]['age_band']}
           /><br />
         </div>
        </Paper>

@@ -18,8 +18,7 @@ class PyramidWidget extends React.Component {
     }
 
     console.log('wgtid '+this.props.wgtId);
-    console.log(this.props.popletDatasetId);
-    console.log(this.props);
+    console.log(this.props.width);
     //console.log(filter);
 
     return(

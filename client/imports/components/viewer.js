@@ -11,6 +11,7 @@ class VisualExplorer extends Component {
   renderPyramid() {
     var age_band = ["All Ages"];
     var width = document.documentElement.clientWidth;
+    console.log(width);
     return <Pyramid
               wgtId="py1"
               age_bands={age_band}

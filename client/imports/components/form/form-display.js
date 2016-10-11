@@ -39,10 +39,10 @@ const styles = {
       console.log(this.state);
     }
     _handleAge(event){
+      console.log(this.state);
       this.setState({
         age: event.target.value
       });
-      console.log(this.state);
     }
      getValues() {
        return this.state;
@@ -63,6 +63,7 @@ const styles = {
         </SelectField>
         <br />
         <TextField
+          id="text-field-controlled"
           value={this.state.age}
           errorText="This field is required"
           floatingLabelText="Age"
