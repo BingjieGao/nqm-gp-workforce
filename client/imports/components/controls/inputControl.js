@@ -5,6 +5,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import Paper from "material-ui/Paper";
 import TextField from "material-ui/TextField";
 import { Meteor } from "meteor/meteor";
+_=lodash;
 
  export default class InputControl extends Component{
    constructor(props) {
@@ -13,12 +14,15 @@ import { Meteor } from "meteor/meteor";
        femaleList: props.ArrayFemale,
        maleList: props.ArrayMale
      }
-     this._handleInputs = this._handleInputs.bind(this);
+     //this._handleInputs = this._handleInputs.bind(this);
    }
-   _handleInputs(event){
+   _handleInputs(arrayIndex,event){
+     console.log(this.state.femaleList);
+     let TempList  = [];
+     TempList = TempList.concat(this.state.femaleList);
+     TempList[arrayIndex]['persons'] = event.target.value;
       this.setState({
-        // femaleList: update(this.state.femaleList,{})
-        // [event.target.name]: event.target.value
+        femaleList: TempList
       });
    }
 
@@ -34,7 +38,7 @@ import { Meteor } from "meteor/meteor";
             value={this.state.femaleList[0]['persons']}
             errorText="This field is required"
             floatingLabelText="Name"
-            onChange={this._handleInputs}
+            onChange={this._handleInputs.bind(0,this)}
             name={this.state.femaleList[0]['age_band']}
           /><br />
           <TextField

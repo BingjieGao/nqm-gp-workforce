@@ -1,9 +1,9 @@
 {
   "public": {
-    "ddpServerURL": "https://tbx.nq-m.com/",
-    "authServerURL": "https://tdx.nq-m.com",
-    "commandHost": "https://cmd.nq-m.com",
-    "queryHost": "https://q.nq-m.com",
+    "ddpServerURL": "http://tbx.nq-m.com/",
+    "authServerURL": "http://tdx.nq-m.com",
+    "commandHost": "http://cmd.nq-m.com",
+    "queryHost": "http://q.nq-m.com",
     "age_bands":["0-4","5-9","10-14","15-19","20-24","25-29","30-34","35-39","40-44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80-84","85-89","90+"]
   }
 }
