@@ -1,19 +1,25 @@
 
 _=lodash;
 
+let currentYear = 2016;
 function tableCalculator(TableData){
-  let sum,totalHours = 0;
+  console.log(TableData);
+  let totalHoursNow = 0, totalHoursTwo = 0,totalHoursFive = 0,totalHoursTen = 0;
   _.forEach(TableData,row => {
-    for(var years in row.hours){
-      totalHours += row.hours[years];
-    }
+    totalHoursNow += row.hours[String(currentYear)];
+    totalHoursTwo += row.hours[String(currentYear+2)];
+    totalHoursFive += row.hours[String(currentYear+5)];
+    totalHoursTen += row.hours[String(currentYear+10)]
   })
-  sum = totalHours * 6;
-  console.log(totalHours);
+
   let tableResult = {
-    sum:sum,
-    totalHours:totalHours
+    totalHoursNow:totalHoursNow,
+    totalHoursTwo:totalHoursTwo,
+    totalHoursFive:totalHoursFive,
+    totalHoursTen:totalHoursTen
   }
+
+  console.log(tableResult);
   return tableResult;
 }
 

@@ -11,9 +11,10 @@ function loadTableData({tableId,tablename},onData){
       age:30,
       gender:'male',
       hours:{
-        '2016':10,
-        '2017':11,
-        '2018':10
+        '2016':40,
+        '2018':37,
+        '2021':30,
+        '2026':20
       }
     },
     {
@@ -22,9 +23,10 @@ function loadTableData({tableId,tablename},onData){
       age:40,
       gender:'male',
       hours:{
-        '2016':20,
-        '2017':13,
-        '2018':16
+        '2016':30,
+        '2018':26,
+        '2021':27,
+        '2026':15
       }
     }
   ]

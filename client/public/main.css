@@ -41,11 +41,13 @@ html, body {
   text-align: center;
 vertical-align: middle;
 }
-.yaxis-labels> p{
+.yaxis-labels > p{
   -webkit-margin-before: 0px;
   -webkit-margin-after: 0px;
 }
-
+.editable-inputs > input{
+  text-align: center;
+}
 #table-widget{
   width:60%;
   -webkit-order:1;

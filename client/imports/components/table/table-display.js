@@ -3,14 +3,15 @@ import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColu
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import Paper from "material-ui/Paper";
-import TableControl from "../controls/tableControl"
-import DialogForm from "../dialog/dialog-display"
+import TableControl from "../controls/tableControl";
+import DialogForm from "../dialog/dialog-display";
+import TextField from "material-ui/TextField";
 
 _=lodash;
 const style = {
   marginRight: 20,
 };
-
+var currentYear = 2016;
 // Task component - represents a single todo item
  export default class TableContent extends Component {
    constructor(props) {
@@ -19,6 +20,10 @@ const style = {
        gpList: this.props.TableData
      };
      this._addRow = this._addRow.bind(this);
+     this._changeNow = this._changeNow.bind(this);
+     this._changeTwo = this._changeTwo.bind(this);
+     this._changeFive = this._changeFive.bind(this);
+     this._changeTen = this._changeTen.bind(this);
    }
 
    _addRow(newInfo){
@@ -27,9 +32,10 @@ const style = {
      newInfo = _.assign(newInfo,{
        _id: this.state.gpList.length+1,
        hours:{
-         '2016':10,
-         '2017':13,
-         '2018':10
+         '2016':35,
+         '2018':35,
+         '2021':35,
+         '2026':0
        }
      });
 
@@ -37,17 +43,108 @@ const style = {
        gpList: this.state.gpList.concat(newInfo)
      });
    }
+   _changeNow(event){
+     console.log('fire changeNow');
+     let TempList = [];
+     TempList = this.state.gpList.concat(TempList);
+     _.forEach(TempList,function(row){
+       if(row['_id'] == Number(event.target.id) && event.target.name == String(currentYear)){
+         console.log(event.target.value);
+         row.hours['2016'] = Number(event.target.value);
+       }
+     })
+     this.setState({
+       gpList: TempList
+     })
+   }
+   _changeTwo(event){
+     console.log('fire changeTwo');
+     let TempList = [];
+     TempList = this.state.gpList.concat(TempList);
+     _.forEach(TempList,function(row){
+       if(row['_id'] == Number(event.target.id) && event.target.name == String(currentYear+2)){
+         console.log(event.target.value);
+         row.hours[String(currentYear+2)] = Number(event.target.value);
+       }
+     })
+     this.setState({
+       gpList: TempList
+     })
+   }
+   _changeFive(event){
+     console.log('fire changeFive');
+     let TempList = [];
+     TempList = this.state.gpList.concat(TempList);
+     _.forEach(TempList,function(row){
+       if(row['_id'] == Number(event.target.id) && event.target.name == String(currentYear+5)){
+         console.log(event.target.value);
+         row.hours[String(currentYear+5)] = Number(event.target.value);
+       }
+     })
+     this.setState({
+       gpList: TempList
+     })
+   }
+   _changeTen(event){
+     console.log('fire changeTen');
+     let TempList = [];
+     TempList = this.state.gpList.concat(TempList);
+     _.forEach(TempList,function(row){
+       if(row['_id'] == Number(event.target.id) && event.target.name == String(currentYear+10)){
+         console.log(event.target.value);
+         row.hours[String(currentYear+10)] = Number(event.target.value);
+       }
+     })
+     this.setState({
+       gpList: TempList
+     });
+     console.log(this.state.gpList);
+   }
   render() {
+    var self = this;
     var tabledata = _.map(this.state.gpList,function(row){
       return (
-        <TableRow key={row._id}>
+        <TableRow key={row._id} selectable={false}>
             <TableRowColumn>{row._id}</TableRowColumn>
             <TableRowColumn>{row.name}</TableRowColumn>
             <TableRowColumn>{row.age}</TableRowColumn>
             <TableRowColumn>{row.gender}</TableRowColumn>
-            <TableRowColumn>{row.hours['2016']}</TableRowColumn>
-            <TableRowColumn>{row.hours['2017']}</TableRowColumn>
-            <TableRowColumn>{row.hours['2018']}</TableRowColumn>
+            <TableRowColumn>
+              <TextField
+                type="number"
+                id={String(row['_id'])}
+                name={String(currentYear)}
+                value={row.hours['2016']}
+                onChange={self._changeNow}
+              />
+            </TableRowColumn>
+            <TableRowColumn>
+              <TextField
+                type="number"
+                id={String(row['_id'])}
+                name={String(currentYear+2)}
+                value={row.hours[String(currentYear+2)]}
+                onChange={self._changeTwo}
+              />
+            </TableRowColumn>
+            <TableRowColumn>
+              <TextField
+                type="number"
+                id={String(row['_id'])}
+                name={String(currentYear+5)}
+                value={row.hours[String(currentYear+5)]}
+                onChange={self._changeFive}
+              />
+            </TableRowColumn>
+            <TableRowColumn>
+              <TextField
+                type="number"
+                id={String(row['_id'])}
+                name={String(currentYear+10)}
+                value={row.hours[String(currentYear+10)]}
+                onChange={self._changeTen}
+              />
+            </TableRowColumn>
         </TableRow>
       )
     })
@@ -55,18 +152,19 @@ const style = {
       <div className="flex-container">
       <Paper zDepth={1} id="table-widget" className="flex-items">
         <Table>
-          <TableHeader>
+          <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
               <TableHeaderColumn>_id</TableHeaderColumn>
               <TableHeaderColumn>Name</TableHeaderColumn>
               <TableHeaderColumn>Age</TableHeaderColumn>
               <TableHeaderColumn>Gender</TableHeaderColumn>
-              <TableHeaderColumn>No. of Hours 2016</TableHeaderColumn>
-              <TableHeaderColumn>No. of Hours 2017</TableHeaderColumn>
-              <TableHeaderColumn>No. of Hours 2018</TableHeaderColumn>
+              <TableHeaderColumn>HPW in {currentYear}</TableHeaderColumn>
+              <TableHeaderColumn>HPW in {currentYear+2}</TableHeaderColumn>
+              <TableHeaderColumn>HPW in {currentYear+5}</TableHeaderColumn>
+              <TableHeaderColumn>HPW in {currentYear+10}</TableHeaderColumn>
             </TableRow>
           </TableHeader>
-          <TableBody>
+          <TableBody  displayRowCheckbox={false}>
               {tabledata}
           </TableBody>
         </Table>

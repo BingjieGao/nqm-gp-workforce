@@ -5,7 +5,9 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import Paper from "material-ui/Paper";
 import TextField from "material-ui/TextField";
 import { Meteor } from "meteor/meteor";
-import YAxisControl from "./yAxisControl"
+import YAxisControl from "./yAxisControl";
+import PyramidControl from "./pyramidControl";
+import ReactDom from "react-dom";
 _=lodash;
 
  export default class InputControl extends Component{
@@ -18,7 +20,6 @@ _=lodash;
      this._handleFemale = this._handleFemale.bind(this);
      this._handleMale = this._handleMale.bind(this);
      this.renderYAxis = this.renderYAxis.bind(this);
-
    }
    _handleFemale(event){
      let TempList  = [];
@@ -59,6 +60,7 @@ _=lodash;
        let tempId = "female"+row['_id'];
         return(
             <TextField
+              className="editable-inputs"
               key={row['_id']}
               id={tempId}
               type="number"
@@ -72,6 +74,7 @@ _=lodash;
         let tempId = "female"+row['_id'];
          return(
               <TextField
+                className="editable-inputs"
                 key={row['_id']}
                 id={tempId}
                 type="number"
