@@ -45,7 +45,7 @@ let currentYear = 2016;
                <TableHeaderColumn>{currentYear+10}</TableHeaderColumn>
              </TableRow>
            </TableHeader>
-           <TableBody displayRowCheckbox={false}>
+           <TableBody displayRowCheckbox={false} className="demand-data">
              {capbilitydata}
            </TableBody>
          </Table>

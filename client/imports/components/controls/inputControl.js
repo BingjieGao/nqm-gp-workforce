@@ -20,6 +20,7 @@ _=lodash;
      this._handleFemale = this._handleFemale.bind(this);
      this._handleMale = this._handleMale.bind(this);
      this.renderYAxis = this.renderYAxis.bind(this);
+     this.renderPyramid = this.renderPyramid.bind(this);
    }
    _handleFemale(event){
      let TempList  = [];
@@ -53,6 +54,12 @@ _=lodash;
      return(
        <YAxisControl />
      )
+   }
+   renderPyramid(){
+     ReactDom.render(<PyramidControl femaleList={this.state.femaleList} maleList={this.state.maleList}/>,document.getElementsByClassName('demand-data'));
+   }
+   componentDidUpdate(){
+     this.renderPyramid();
    }
    render(){
      var self = this;
