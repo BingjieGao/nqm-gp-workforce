@@ -58,8 +58,15 @@ _=lodash;
    renderPyramid(){
      ReactDom.render(<PyramidControl femaleList={this.state.femaleList} maleList={this.state.maleList}/>,document.getElementsByClassName('demand-data'));
    }
+   componentDidMount(props){
+     setTimeout(function(){
+       ReactDom.render(<PyramidControl femaleList={props.femaleList} maleList={props.maleList}/>,document.getElementsByClassName('demand-data'));
+     },5000);
+   }
    componentDidUpdate(){
-     this.renderPyramid();
+     setTimeout(function(){
+       ReactDom.render(<PyramidControl femaleList={this.state.femaleList} maleList={this.state.maleList}/>,document.getElementsByClassName('demand-data'));
+     },5000);
    }
    render(){
      var self = this;

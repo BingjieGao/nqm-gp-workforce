@@ -16,10 +16,10 @@ let currentYear = 2016;
      let capbilitydata =
          <TableRow selectable={false}>
             <TableRowColumn>Total HPY</TableRowColumn>
-             <TableRowColumn>{totalHoursNow}</TableRowColumn>
-             <TableRowColumn>{totalHoursTwo}</TableRowColumn>
-             <TableRowColumn>{totalHoursFive}</TableRowColumn>
-             <TableRowColumn>{totalHoursTen}</TableRowColumn>
+             <TableRowColumn name="totalHoursNow">{totalHoursNow}</TableRowColumn>
+             <TableRowColumn name="totalHoursTwo">{totalHoursTwo}</TableRowColumn>
+             <TableRowColumn name="totalHoursFive">{totalHoursFive}</TableRowColumn>
+             <TableRowColumn name="totalHoursTen">{totalHoursTen}</TableRowColumn>
          </TableRow>
          ;
 
@@ -47,6 +47,8 @@ let currentYear = 2016;
            </TableHeader>
            <TableBody displayRowCheckbox={false} className="demand-data">
              {capbilitydata}
+             <TableRow selectable={false} className="demand-data">
+             </TableRow>
            </TableBody>
          </Table>
        </Paper>
