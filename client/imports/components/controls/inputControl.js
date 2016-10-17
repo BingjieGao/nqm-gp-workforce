@@ -8,6 +8,8 @@ import { Meteor } from "meteor/meteor";
 import YAxisControl from "./yAxisControl";
 import PyramidControl from "./pyramidControl";
 import ReactDom from "react-dom";
+import {ratingCalculator} from "../../functions/ratingCalculator";
+
 _=lodash;
 
  export default class InputControl extends Component{
@@ -20,7 +22,6 @@ _=lodash;
      this._handleFemale = this._handleFemale.bind(this);
      this._handleMale = this._handleMale.bind(this);
      this.renderYAxis = this.renderYAxis.bind(this);
-     this.renderPyramid = this.renderPyramid.bind(this);
    }
    _handleFemale(event){
      let TempList  = [];
@@ -34,6 +35,16 @@ _=lodash;
       this.setState({
         femaleList: TempList,
       });
+      let ratingResult = ratingCalculator(TempList,this.state.maleList);
+      $('#demand-2016').html(ratingResult.demandNow);
+      $('#demand-2018').html(ratingResult.demandTwo);
+      $('#demand-2021').html(ratingResult.demandFive);
+      $('#demand-2026').html(ratingResult.demandTen);
+
+      $('#shortfall-2016').html(ratingResult.shortfallNow);
+      $('#shortfall-2018').html(ratingResult.shortfallTwo);
+      $('#shortfall-2021').html(ratingResult.shortfallFive);
+      $('#shortfall-2026').html(ratingResult.shortfallTen);
 
       this.props.onFemaleChange(TempList);
    }
@@ -44,6 +55,17 @@ _=lodash;
        if(TempObj['age_band'] == event.target.name)
         TempObj['persons'] = Number(event.target.value);
      })
+     let ratingResult = ratingCalculator(this.state.femaleList,TempList);
+     $('#demand-2016').html(ratingResult.demandNow);
+     $('#demand-2018').html(ratingResult.demandTwo);
+     $('#demand-2021').html(ratingResult.demandFive);
+     $('#demand-2026').html(ratingResult.demandTen);
+
+     $('#shortfall-2016').html(ratingResult.shortfallNow);
+     $('#shortfall-2018').html(ratingResult.shortfallTwo);
+     $('#shortfall-2021').html(ratingResult.shortfallFive);
+     $('#shortfall-2026').html(ratingResult.shortfallTen);
+
 
       this.setState({
         maleList: TempList
@@ -55,19 +77,19 @@ _=lodash;
        <YAxisControl />
      )
    }
-   renderPyramid(){
-     ReactDom.render(<PyramidControl femaleList={this.state.femaleList} maleList={this.state.maleList}/>,document.getElementsByClassName('demand-data'));
-   }
-   componentDidMount(props){
-     setTimeout(function(){
-       ReactDom.render(<PyramidControl femaleList={props.femaleList} maleList={props.maleList}/>,document.getElementsByClassName('demand-data'));
-     },5000);
-   }
-   componentDidUpdate(){
-     setTimeout(function(){
-       ReactDom.render(<PyramidControl femaleList={this.state.femaleList} maleList={this.state.maleList}/>,document.getElementsByClassName('demand-data'));
-     },5000);
-   }
+  //  renderPyramid(){
+  //    ReactDom.render(<PyramidControl femaleList={this.state.femaleList} maleList={this.state.maleList}/>,document.getElementsByClassName('demand-data'));
+  //  }
+  //  componentDidMount(props){
+  //    setTimeout(function(){
+  //      ReactDom.render(<PyramidControl femaleList={props.femaleList} maleList={props.maleList}/>,document.getElementsByClassName('demand-data'));
+  //    },5000);
+  //  }
+  //  componentDidUpdate(){
+  //    setTimeout(function(){
+  //      ReactDom.render(<PyramidControl femaleList={this.state.femaleList} maleList={this.state.maleList}/>,document.getElementsByClassName('demand-data'));
+  //    },5000);
+  //  }
    render(){
      var self = this;
      var femaleDisplay =  _.map(this.state.femaleList,function(row){
@@ -99,6 +121,17 @@ _=lodash;
          )
        })
        console.log(this.renderYAxis());
+
+       let ratingResult = ratingCalculator(self.state.femaleList,self.state.maleList);
+       $('#demand-2016').html(ratingResult.demandNow);
+       $('#demand-2018').html(ratingResult.demandTwo);
+       $('#demand-2021').html(ratingResult.demandFive);
+       $('#demand-2026').html(ratingResult.demandTen);
+
+       $('#shortfall-2016').html(ratingResult.shortfallNow);
+       $('#shortfall-2018').html(ratingResult.shortfallTwo);
+       $('#shortfall-2021').html(ratingResult.shortfallFive);
+       $('#shortfall-2026').html(ratingResult.shortfallTen);
 
      return(
        <Paper id="input-widget" zDepth={1} className="flex-items">

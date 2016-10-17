@@ -2,10 +2,14 @@ import React, { Component, PropTypes } from 'react';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import Paper from "material-ui/Paper";
 import {tableCalculator} from "../../functions/tableCalculator";
+import {shortfallD3} from "../../functions/shortfallD3";
 
 let currentYear = 2016;
 
  export default class TableControl extends Component{
+   componentDidMount(){
+     shortfallD3();
+   }
    render(){
      var tableResults = tableCalculator(this.props.TableData);
      var totalHoursNow = tableResults.totalHoursNow;
@@ -16,22 +20,31 @@ let currentYear = 2016;
      let capbilitydata =
          <TableRow selectable={false}>
             <TableRowColumn>Total HPY</TableRowColumn>
-             <TableRowColumn name="totalHoursNow">{totalHoursNow}</TableRowColumn>
-             <TableRowColumn name="totalHoursTwo">{totalHoursTwo}</TableRowColumn>
-             <TableRowColumn name="totalHoursFive">{totalHoursFive}</TableRowColumn>
-             <TableRowColumn name="totalHoursTen">{totalHoursTen}</TableRowColumn>
+             <TableRowColumn id="totalHoursNow">{totalHoursNow}</TableRowColumn>
+             <TableRowColumn id="totalHoursTwo">{totalHoursTwo}</TableRowColumn>
+             <TableRowColumn id="totalHoursFive">{totalHoursFive}</TableRowColumn>
+             <TableRowColumn id="totalHoursTen">{totalHoursTen}</TableRowColumn>
          </TableRow>
          ;
 
       let demanddata =
             <TableRow selectable={false}>
-               <TableRowColumn>Total HPY</TableRowColumn>
-                <TableRowColumn>{totalHoursNow}</TableRowColumn>
-                <TableRowColumn>{totalHoursTwo}</TableRowColumn>
-                <TableRowColumn>{totalHoursFive}</TableRowColumn>
-                <TableRowColumn>{totalHoursTen}</TableRowColumn>
+               <TableRowColumn>Demand</TableRowColumn>
+                <TableRowColumn id="demand-2016"></TableRowColumn>
+                <TableRowColumn id="demand-2018"></TableRowColumn>
+                <TableRowColumn id="demand-2021"></TableRowColumn>
+                <TableRowColumn id="demand-2026"></TableRowColumn>
             </TableRow>
             ;
+    let shortfalldata =
+          <TableRow selectable={false}>
+             <TableRowColumn>Shortfall</TableRowColumn>
+              <TableRowColumn id="shortfall-2016"></TableRowColumn>
+              <TableRowColumn id="shortfall-2018"></TableRowColumn>
+              <TableRowColumn id="shortfall-2021"></TableRowColumn>
+              <TableRowColumn id="shortfall-2026"></TableRowColumn>
+          </TableRow>
+          ;
 
      return(
        <Paper id="calculated-widget"zDepth={1} className="flex-items">
@@ -47,10 +60,11 @@ let currentYear = 2016;
            </TableHeader>
            <TableBody displayRowCheckbox={false} className="demand-data">
              {capbilitydata}
-             <TableRow selectable={false} className="demand-data">
-             </TableRow>
+             {demanddata}
+             {shortfalldata}
            </TableBody>
          </Table>
+         <div id="shortfall-d3"></div>
        </Paper>
      )
 

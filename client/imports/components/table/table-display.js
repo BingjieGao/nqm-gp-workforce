@@ -6,6 +6,7 @@ import Paper from "material-ui/Paper";
 import TableControl from "../controls/tableControl";
 import DialogForm from "../dialog/dialog-display";
 import TextField from "material-ui/TextField";
+import {shortfallCalculator} from "../../functions/shortfallCalculator";
 
 _=lodash;
 const style = {
@@ -41,6 +42,8 @@ var currentYear = 2016;
 
      this.setState({
        gpList: this.state.gpList.concat(newInfo)
+     },function(){
+       shortfallCalculator();
      });
    }
    _changeNow(event){
@@ -55,6 +58,8 @@ var currentYear = 2016;
      })
      this.setState({
        gpList: TempList
+     },function(){
+       shortfallCalculator();
      })
    }
    _changeTwo(event){
@@ -69,6 +74,8 @@ var currentYear = 2016;
      })
      this.setState({
        gpList: TempList
+     },function(){
+       shortfallCalculator();
      })
    }
    _changeFive(event){
@@ -83,6 +90,8 @@ var currentYear = 2016;
      })
      this.setState({
        gpList: TempList
+     },function(){
+       shortfallCalculator();
      })
    }
    _changeTen(event){
@@ -97,6 +106,8 @@ var currentYear = 2016;
      })
      this.setState({
        gpList: TempList
+     },function(){
+       shortfallCalculator();
      });
      console.log(this.state.gpList);
    }
