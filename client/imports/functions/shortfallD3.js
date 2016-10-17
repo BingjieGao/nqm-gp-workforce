@@ -34,7 +34,7 @@ var svg = d3.select("#shortfall-d3").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   x.domain(d3.extent(year_array, function(d) { return d; }));
-  y.domain(d3.extent(shortfall_array, function(d) { d = +d; return d; }));
+  y.domain(d3.extent(shortfall_array, function(d) { d = +d; console.log(d); return d; }));
 
   svg.append("g")
       .attr("class", "x axis")

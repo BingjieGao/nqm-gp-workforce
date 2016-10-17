@@ -9,6 +9,7 @@ import YAxisControl from "./yAxisControl";
 import PyramidControl from "./pyramidControl";
 import ReactDom from "react-dom";
 import {ratingCalculator} from "../../functions/ratingCalculator";
+import {shortfallD3} from "../../functions/shortfallD3";
 
 _=lodash;
 
@@ -132,6 +133,7 @@ _=lodash;
        $('#shortfall-2018').html(ratingResult.shortfallTwo);
        $('#shortfall-2021').html(ratingResult.shortfallFive);
        $('#shortfall-2026').html(ratingResult.shortfallTen);
+       shortfallD3();
 
      return(
        <Paper id="input-widget" zDepth={1} className="flex-items">

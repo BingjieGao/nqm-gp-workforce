@@ -2,14 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import Paper from "material-ui/Paper";
 import {tableCalculator} from "../../functions/tableCalculator";
-import {shortfallD3} from "../../functions/shortfallD3";
 
 let currentYear = 2016;
 
  export default class TableControl extends Component{
-   componentDidMount(){
-     shortfallD3();
-   }
    render(){
      var tableResults = tableCalculator(this.props.TableData);
      var totalHoursNow = tableResults.totalHoursNow;
