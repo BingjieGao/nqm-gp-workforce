@@ -10,6 +10,7 @@ import PyramidControl from "./pyramidControl";
 import ReactDom from "react-dom";
 import {ratingCalculator} from "../../functions/ratingCalculator";
 import {shortfallD3} from "../../functions/shortfallD3";
+import {stackArea} from "../../functions/stackArea";
 
 _=lodash;
 
@@ -36,16 +37,8 @@ _=lodash;
       this.setState({
         femaleList: TempList,
       });
-      let ratingResult = ratingCalculator(TempList,this.state.maleList);
-      $('#demand-2016').html(ratingResult.demandNow);
-      $('#demand-2018').html(ratingResult.demandTwo);
-      $('#demand-2021').html(ratingResult.demandFive);
-      $('#demand-2026').html(ratingResult.demandTen);
-
-      $('#shortfall-2016').html(ratingResult.shortfallNow);
-      $('#shortfall-2018').html(ratingResult.shortfallTwo);
-      $('#shortfall-2021').html(ratingResult.shortfallFive);
-      $('#shortfall-2026').html(ratingResult.shortfallTen);
+      ratingCalculator(TempList,this.state.maleList);
+      shortfallD3();
 
       this.props.onFemaleChange(TempList);
    }
@@ -56,17 +49,8 @@ _=lodash;
        if(TempObj['age_band'] == event.target.name)
         TempObj['persons'] = Number(event.target.value);
      })
-     let ratingResult = ratingCalculator(this.state.femaleList,TempList);
-     $('#demand-2016').html(ratingResult.demandNow);
-     $('#demand-2018').html(ratingResult.demandTwo);
-     $('#demand-2021').html(ratingResult.demandFive);
-     $('#demand-2026').html(ratingResult.demandTen);
-
-     $('#shortfall-2016').html(ratingResult.shortfallNow);
-     $('#shortfall-2018').html(ratingResult.shortfallTwo);
-     $('#shortfall-2021').html(ratingResult.shortfallFive);
-     $('#shortfall-2026').html(ratingResult.shortfallTen);
-
+     ratingCalculator(this.state.femaleList,TempList);
+     shortfallD3()
 
       this.setState({
         maleList: TempList
@@ -123,17 +107,9 @@ _=lodash;
        })
        console.log(this.renderYAxis());
 
-       let ratingResult = ratingCalculator(self.state.femaleList,self.state.maleList);
-       $('#demand-2016').html(ratingResult.demandNow);
-       $('#demand-2018').html(ratingResult.demandTwo);
-       $('#demand-2021').html(ratingResult.demandFive);
-       $('#demand-2026').html(ratingResult.demandTen);
-
-       $('#shortfall-2016').html(ratingResult.shortfallNow);
-       $('#shortfall-2018').html(ratingResult.shortfallTwo);
-       $('#shortfall-2021').html(ratingResult.shortfallFive);
-       $('#shortfall-2026').html(ratingResult.shortfallTen);
+       ratingCalculator(self.state.femaleList,self.state.maleList);
        shortfallD3();
+       //stackArea();
 
      return(
        <Paper id="input-widget" zDepth={1} className="flex-items">

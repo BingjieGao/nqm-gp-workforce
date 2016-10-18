@@ -17,9 +17,9 @@ function ratingCalculator(PyramidFemale,PyramidMale){
   totalDemandTen = totalDemandNow;
 
   shortfallNow = -Number($('#totalHoursNow').html())+totalDemandNow;
-  shortfallTwo = shortfallNow;
-  shortfallFive = shortfallNow;
-  shortfallTen = shortfallNow;
+  shortfallTwo = -Number($('#totalHoursTwo').html())+totalDemandTwo;
+  shortfallFive = -Number($('#totalHoursFive').html())+totalDemandFive;
+  shortfallTen = -Number($('#totalHoursTen').html())+totalDemandTen;
 
   let ratingResult = {
     demandNow:totalDemandNow,
@@ -32,8 +32,16 @@ function ratingCalculator(PyramidFemale,PyramidMale){
     shortfallTen: shortfallTen
   }
 
-  console.log(ratingResult);
-  return ratingResult;
+  $('#demand-2016').html(ratingResult.demandNow);
+  $('#demand-2018').html(ratingResult.demandTwo);
+  $('#demand-2021').html(ratingResult.demandFive);
+  $('#demand-2026').html(ratingResult.demandTen);
+
+  $('#shortfall-2016').html(ratingResult.shortfallNow);
+  $('#shortfall-2018').html(ratingResult.shortfallTwo);
+  $('#shortfall-2021').html(ratingResult.shortfallFive);
+  $('#shortfall-2026').html(ratingResult.shortfallTen);
+
 }
 
 export {ratingCalculator};

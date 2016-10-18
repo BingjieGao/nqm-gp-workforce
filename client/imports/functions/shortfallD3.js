@@ -1,21 +1,33 @@
 
 _=lodash;
-let year_array = ["2016","2018","2021","2026"];
+let year_array = ["2016","2018","2021","2026","2030"];
 
 function shortfallD3(){
-  let shortfall_array = [Number($('#shortfall-2016').html()),Number($('#shortfall-2018').html()),Number($('#shortfall-2021').html()),Number($('#shortfall-2026').html())];
-  var margin = {top: 20, right: 20, bottom: 30, left: 50},
-    width = 400 - margin.left - margin.right,
-    height = 150 - margin.top - margin.bottom;
+  let shortfall_line = d3.select('#shortfall-d3');
+  shortfall_line.selectAll('svg').remove();
+  let shortfall_array = [
+    {
+      year:"2016",
+      shortfall:Number($('#shortfall-2016').html())
+    },{
+      year:"2018",
+      shortfall:Number($('#shortfall-2018').html())
+    },{
+      year:"2021",
+      shortfall:Number($('#shortfall-2021').html())
+    },{
+      year:"2026",
+      shortfall:Number($('#shortfall-2026').html())
+    }];
+  console.log(shortfall_array);
+  var margin = {top: 20, right: 20, bottom: 30, left: 100},
+    width = 1000 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+    padding = width * 0.05;
 
-var formatDate = d3.time.format("%d-%b-%y");
-
-var x = d3.scale.ordinal().rangeRoundBands([0, width]);
-
-x.domain(year_array.map(function(d) { return d; }));
-
+var x = d3.scale.ordinal().rangePoints([0,width],0.5);
 var y = d3.scale.linear()
-    .range([height, 0]);
+    .rangeRound([height, 5]);
 
 var xAxis = d3.svg.axis().scale(x).orient("bottom");
 
@@ -23,18 +35,18 @@ var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left");
 
-var line = d3.svg.line()
-    .x(function(d,i) { return x(year_array[i]); })
-    .y(function(d,i) { return y(d); });
-
 var svg = d3.select("#shortfall-d3").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  x.domain(d3.extent(year_array, function(d) { return d; }));
-  y.domain(d3.extent(shortfall_array, function(d) { d = +d; console.log(d); return d; }));
+  x.domain(shortfall_array.map(function(d) { return d['year']; }));
+  y.domain([d3.min(shortfall_array,function(d){return d['shortfall']*0.9}),d3.max(shortfall_array,function(d){return d['shortfall']*1.1})]);
+
+  var line = d3.svg.line()
+      .x(function(d,i) { return x(d['year']); })
+      .y(function(d,i) { console.log(y(d['shortfall'])); return y(d['shortfall']); });
 
   svg.append("g")
       .attr("class", "x axis")
@@ -49,7 +61,7 @@ var svg = d3.select("#shortfall-d3").append("svg")
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Price ($)");
+      .text("Shortfall ");
 
   svg.append("path")
       .datum(shortfall_array)

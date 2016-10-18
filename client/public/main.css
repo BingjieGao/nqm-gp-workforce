@@ -10,7 +10,7 @@ html, body {
   width:100%;
 }
 
-.flex-container,.input-container{
+.flex-container,.input-container,.d3-container{
   background-color:transparent;
   margin: 0;
   list-style: none;
@@ -84,4 +84,29 @@ vertical-align: middle;
   width:40%;
   order:3;
   -webkit-order:3;
+}
+
+/*D3 path*/
+path {
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+#shortfall-line{
+  width:97%;
+  order:2;
+  -webkit-order:2;
+}
+#stack-d3{
+  width:58%;
+  order:1;
+  -webkit-order:1;
 }

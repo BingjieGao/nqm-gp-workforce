@@ -2,8 +2,14 @@ import React,{Component,Prototype} from 'react'
 import {Meteor} from 'meteor/meteor';
 import TableWidget from "./table/table-widget";
 import Pyramid from "./pyramid/pyramid-widget";
+import Shortfall from "./shortfall/shortfall-widget";
+import Paper from "material-ui/Paper"
 
 class VisualExplorer extends Component {
+
+  renderGraphs(){
+    return <Shortfall />
+  }
 
   renderTable(){
     return <TableWidget />;
@@ -27,6 +33,7 @@ class VisualExplorer extends Component {
     return (
       <div className="container">
         {this.renderTable()}
+        {this.renderGraphs()}
         {this.renderPyramid()}
       </div>
     )

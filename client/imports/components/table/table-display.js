@@ -7,6 +7,7 @@ import TableControl from "../controls/tableControl";
 import DialogForm from "../dialog/dialog-display";
 import TextField from "material-ui/TextField";
 import {shortfallCalculator} from "../../functions/shortfallCalculator";
+import {shortfallD3} from "../../functions/shortfallD3"
 
 _=lodash;
 const style = {
@@ -44,6 +45,7 @@ var currentYear = 2016;
        gpList: this.state.gpList.concat(newInfo)
      },function(){
        shortfallCalculator();
+       shortfallD3();
      });
    }
    _changeNow(event){
@@ -60,6 +62,7 @@ var currentYear = 2016;
        gpList: TempList
      },function(){
        shortfallCalculator();
+       shortfallD3();
      })
    }
    _changeTwo(event){
@@ -76,6 +79,7 @@ var currentYear = 2016;
        gpList: TempList
      },function(){
        shortfallCalculator();
+       shortfallD3();
      })
    }
    _changeFive(event){
@@ -92,6 +96,7 @@ var currentYear = 2016;
        gpList: TempList
      },function(){
        shortfallCalculator();
+       shortfallD3();
      })
    }
    _changeTen(event){
@@ -108,6 +113,7 @@ var currentYear = 2016;
        gpList: TempList
      },function(){
        shortfallCalculator();
+       shortfallD3();
      });
      console.log(this.state.gpList);
    }

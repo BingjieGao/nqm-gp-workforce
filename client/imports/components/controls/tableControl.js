@@ -60,7 +60,6 @@ let currentYear = 2016;
              {shortfalldata}
            </TableBody>
          </Table>
-         <div id="shortfall-d3"></div>
        </Paper>
      )
 
