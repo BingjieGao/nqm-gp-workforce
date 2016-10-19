@@ -7,7 +7,9 @@ import TableControl from "../controls/tableControl";
 import DialogForm from "../dialog/dialog-display";
 import TextField from "material-ui/TextField";
 import {shortfallCalculator} from "../../functions/shortfallCalculator";
-import {shortfallD3} from "../../functions/shortfallD3"
+import {shortfallD3} from "../../functions/shortfallD3";
+import WorkforceControl from "../controls/workforceControl";
+import ReactDOM from 'react-dom';
 
 _=lodash;
 const style = {
@@ -117,6 +119,28 @@ var currentYear = 2016;
      });
      console.log(this.state.gpList);
    }
+   componentDidMount(){
+     console.log(this.state.gpList);
+     ReactDOM.render(
+       <div className="calculated-container">
+         <TableControl TableData={this.state.gpList}/>
+         <WorkforceControl />
+      </div>,document.getElementById('calculated'));
+   }
+   componentWillUpdate(){
+     console.log("componentWillUpdate");
+     ReactDOM.render(
+       <div className="calculated-container">
+         <TableControl TableData={this.state.gpList}/>
+      </div>,document.getElementById('calculated'));
+   }
+  componentDidUpdate(){
+    console.log("componentDidUpdate");
+    ReactDOM.render(
+      <div className="calculated-container">
+        <TableControl TableData={this.state.gpList}/>
+      </div>,document.getElementById('calculated'));
+  }
   render() {
     var self = this;
     var tabledata = _.map(this.state.gpList,function(row){
@@ -174,7 +198,7 @@ var currentYear = 2016;
               <TableHeaderColumn>_id</TableHeaderColumn>
               <TableHeaderColumn>Name</TableHeaderColumn>
               <TableHeaderColumn>Age</TableHeaderColumn>
-              <TableHeaderColumn>Gender</TableHeaderColumn> 
+              <TableHeaderColumn>Gender</TableHeaderColumn>
               <TableHeaderColumn>HPW in {currentYear}</TableHeaderColumn>
               <TableHeaderColumn>HPW in {currentYear+2}</TableHeaderColumn>
               <TableHeaderColumn>HPW in {currentYear+5}</TableHeaderColumn>
@@ -187,16 +211,10 @@ var currentYear = 2016;
         </Table>
         <DialogForm onFormSubmit={this._addRow}/>
       </Paper>
-      <TableControl TableData={this.state.gpList}/>
     </div>
     );
   }
 }
-
-// const TableContent = ({TableContents}) =>(
-//
-// )
-
 TableContent.propTypes = {
   // This component gets the task to display through a React prop.
   // We can use propTypes to indicate it is required

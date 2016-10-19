@@ -10,7 +10,7 @@ html, body {
   width:100%;
 }
 
-.flex-container,.input-container,.d3-container{
+.flex-container,.input-container,.d3-container,.calculated-container{
   background-color:transparent;
   margin: 0;
   list-style: none;
@@ -49,12 +49,12 @@ vertical-align: middle;
   text-align: center;
 }
 #table-widget{
-  width:60%;
+  width:99%;
   -webkit-order:1;
   order:1;
 }
 #calculated-widget{
-  width:35%;
+  width:60%;
   padding:10px;
   -webkit-order:2;
   order:2;
@@ -84,6 +84,11 @@ vertical-align: middle;
   width:40%;
   order:3;
   -webkit-order:3;
+}
+#workforce-widget{
+  width:39%;
+  order:1;
+  -webkit-order:1;
 }
 
 /*D3 path*/

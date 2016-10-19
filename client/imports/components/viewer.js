@@ -35,6 +35,7 @@ class VisualExplorer extends Component {
         {this.renderTable()}
         {this.renderGraphs()}
         {this.renderPyramid()}
+        <div id="calculated"></div>
       </div>
     )
   }

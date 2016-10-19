@@ -12,6 +12,7 @@ function ratingCalculator(PyramidFemale,PyramidMale){
     //console.log(PyramidMale[Index]);
     totalDemandNow += row['persons']*ratingFemale + PyramidMale[Index]['persons']*ratingMale;
   });
+  totalDemandNow = parseInt(totalDemandNow);
   totalDemandTwo = totalDemandNow;
   totalDemandFive =  totalDemandNow;
   totalDemandTen = totalDemandNow;

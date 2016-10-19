@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import Paper from "material-ui/Paper";
 import {tableCalculator} from "../../functions/tableCalculator";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 let currentYear = 2016;
 
@@ -43,6 +44,7 @@ let currentYear = 2016;
           ;
 
      return(
+       <MuiThemeProvider>
        <Paper id="calculated-widget"zDepth={1} className="flex-items">
          <Table>
            <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
@@ -61,6 +63,7 @@ let currentYear = 2016;
            </TableBody>
          </Table>
        </Paper>
+     </MuiThemeProvider>
      )
 
    }
