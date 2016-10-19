@@ -174,7 +174,7 @@ var currentYear = 2016;
               <TableHeaderColumn>_id</TableHeaderColumn>
               <TableHeaderColumn>Name</TableHeaderColumn>
               <TableHeaderColumn>Age</TableHeaderColumn>
-              <TableHeaderColumn>Gender</TableHeaderColumn>
+              <TableHeaderColumn>Gender</TableHeaderColumn> 
               <TableHeaderColumn>HPW in {currentYear}</TableHeaderColumn>
               <TableHeaderColumn>HPW in {currentYear+2}</TableHeaderColumn>
               <TableHeaderColumn>HPW in {currentYear+5}</TableHeaderColumn>
