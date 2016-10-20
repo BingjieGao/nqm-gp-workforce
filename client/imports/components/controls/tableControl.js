@@ -14,6 +14,28 @@ let currentYear = 2016;
      var totalHoursFive = tableResults.totalHoursFive;
      var totalHoursTwo = tableResults.totalHoursTwo;
 
+     let dataArray = [
+       {
+         name:"Demand",
+         key:"demand"
+       },{
+         name:"Shortfall",
+         key:"shortfall"
+       },{
+         name:"Current Key",
+         key:"cost"
+       },{
+         name:"Substitute Capacity",
+         key:"capacity"
+       },{
+         name:"New Shortfall",
+         key:"newshortfall"
+       },{
+         name:"New Cost",
+         key:"newcost"
+       }
+     ]
+
      let capbilitydata =
          <TableRow selectable={false}>
             <TableRowColumn>Total HPY</TableRowColumn>
@@ -24,15 +46,18 @@ let currentYear = 2016;
          </TableRow>
          ;
 
-      let demanddata =
-            <TableRow selectable={false}>
-               <TableRowColumn>Demand</TableRowColumn>
-                <TableRowColumn id="demand-2016"></TableRowColumn>
-                <TableRowColumn id="demand-2018"></TableRowColumn>
-                <TableRowColumn id="demand-2021"></TableRowColumn>
-                <TableRowColumn id="demand-2026"></TableRowColumn>
-            </TableRow>
-            ;
+      let controldata = _.map(dataArray,function(row){
+        return (
+          <TableRow key={row.key} selectable={false}>
+             <TableRowColumn>{row.name}</TableRowColumn>
+              <TableRowColumn id={row.key+"-2016"}></TableRowColumn>
+              <TableRowColumn id={row.key+"-2018"}></TableRowColumn>
+              <TableRowColumn id={row.key+"-2021"}></TableRowColumn>
+              <TableRowColumn id={row.key+"-2026"}></TableRowColumn>
+          </TableRow>
+        )
+      })
+
     let shortfalldata =
           <TableRow selectable={false}>
              <TableRowColumn>Shortfall</TableRowColumn>
@@ -42,10 +67,28 @@ let currentYear = 2016;
               <TableRowColumn id="shortfall-2026"></TableRowColumn>
           </TableRow>
           ;
+    let costdata =
+          <TableRow selectable={false}>
+             <TableRowColumn>Current Cost</TableRowColumn>
+              <TableRowColumn id="cost-2016"></TableRowColumn>
+              <TableRowColumn id="cost-2018"></TableRowColumn>
+              <TableRowColumn id="cost-2021"></TableRowColumn>
+              <TableRowColumn id="cost-2026"></TableRowColumn>
+          </TableRow>
+          ;
+    let subdata =
+          <TableRow selectable={false}>
+             <TableRowColumn>Substitute Capacity</TableRowColumn>
+              <TableRowColumn id="cost-2016"></TableRowColumn>
+              <TableRowColumn id="cost-2018"></TableRowColumn>
+              <TableRowColumn id="cost-2021"></TableRowColumn>
+              <TableRowColumn id="cost-2026"></TableRowColumn>
+          </TableRow>
+          ;
 
      return(
        <MuiThemeProvider>
-       <Paper id="calculated-widget"zDepth={1} className="flex-items">
+       <Paper zDepth={1}>
          <Table>
            <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
              <TableRow>
@@ -58,8 +101,7 @@ let currentYear = 2016;
            </TableHeader>
            <TableBody displayRowCheckbox={false} className="demand-data">
              {capbilitydata}
-             {demanddata}
-             {shortfalldata}
+             {controldata}
            </TableBody>
          </Table>
        </Paper>

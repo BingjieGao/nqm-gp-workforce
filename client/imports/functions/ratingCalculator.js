@@ -1,3 +1,4 @@
+import {substituteCalculator} from "./substituteCalculator";
 
 _=lodash;
 
@@ -22,6 +23,16 @@ function ratingCalculator(PyramidFemale,PyramidMale){
   shortfallFive = -Number($('#totalHoursFive').html())+totalDemandFive;
   shortfallTen = -Number($('#totalHoursTen').html())+totalDemandTen;
 
+
+  console.log($("#0cost").val());
+  var GPcost = Number($("#0cost").val());
+  var Locumcost = Number($("#1cost").val());
+
+  let costNow = Number($('#totalHoursNow').html())*GPcost + shortfallNow*Locumcost;
+  let costTwo = Number($('#totalHoursTwo').html())*GPcost + shortfallTwo*Locumcost;
+  let costFive = Number($('#totalHoursFive').html())*GPcost + shortfallFive*Locumcost;
+  let costTen = Number($('#totalHoursTen').html())*GPcost + shortfallTen*Locumcost;
+
   let ratingResult = {
     demandNow:totalDemandNow,
     demandTwo:totalDemandTwo,
@@ -43,6 +54,12 @@ function ratingCalculator(PyramidFemale,PyramidMale){
   $('#shortfall-2021').html(ratingResult.shortfallFive);
   $('#shortfall-2026').html(ratingResult.shortfallTen);
 
+  $('#cost-2016').html(parseInt(costNow));
+  $('#cost-2018').html(parseInt(costTwo));
+  $('#cost-2021').html(parseInt(costFive));
+  $('#cost-2026').html(parseInt(costTen));
+
+  substituteCalculator();
 }
 
 export {ratingCalculator};

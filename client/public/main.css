@@ -89,6 +89,7 @@ vertical-align: middle;
   width:39%;
   order:1;
   -webkit-order:1;
+  padding:10px;
 }
 
 /*D3 path*/

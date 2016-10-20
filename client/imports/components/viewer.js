@@ -35,7 +35,13 @@ class VisualExplorer extends Component {
         {this.renderTable()}
         {this.renderGraphs()}
         {this.renderPyramid()}
-        <div id="calculated"></div>
+
+        <div className="calculated-container">
+          <div id="workforce-widget" className="flex-items">
+          </div>
+          <div id="calculated-widget" className="flex-items">
+          </div>
+        </div>
       </div>
     )
   }

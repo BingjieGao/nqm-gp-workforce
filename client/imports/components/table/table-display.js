@@ -48,6 +48,7 @@ var currentYear = 2016;
      },function(){
        shortfallCalculator();
        shortfallD3();
+       substituteCalculator();
      });
    }
    _changeNow(event){
@@ -65,6 +66,7 @@ var currentYear = 2016;
      },function(){
        shortfallCalculator();
        shortfallD3();
+       substituteCalculator();
      })
    }
    _changeTwo(event){
@@ -82,6 +84,7 @@ var currentYear = 2016;
      },function(){
        shortfallCalculator();
        shortfallD3();
+       substituteCalculator();
      })
    }
    _changeFive(event){
@@ -99,6 +102,7 @@ var currentYear = 2016;
      },function(){
        shortfallCalculator();
        shortfallD3();
+       substituteCalculator();
      })
    }
    _changeTen(event){
@@ -116,30 +120,30 @@ var currentYear = 2016;
      },function(){
        shortfallCalculator();
        shortfallD3();
+       substituteCalculator();
      });
      console.log(this.state.gpList);
    }
    componentDidMount(){
      console.log(this.state.gpList);
      ReactDOM.render(
-       <div className="calculated-container">
-         <TableControl TableData={this.state.gpList}/>
-         <WorkforceControl />
-      </div>,document.getElementById('calculated'));
+         <WorkforceControl />,document.getElementById('workforce-widget'));
+
+    ReactDOM.render(
+       <TableControl TableData={this.state.gpList}/>,document.getElementById('calculated-widget')
+    );
    }
    componentWillUpdate(){
      console.log("componentWillUpdate");
      ReactDOM.render(
-       <div className="calculated-container">
-         <TableControl TableData={this.state.gpList}/>
-      </div>,document.getElementById('calculated'));
+        <TableControl TableData={this.state.gpList}/>,document.getElementById('calculated-widget')
+     );
    }
   componentDidUpdate(){
     console.log("componentDidUpdate");
     ReactDOM.render(
-      <div className="calculated-container">
-        <TableControl TableData={this.state.gpList}/>
-      </div>,document.getElementById('calculated'));
+       <TableControl TableData={this.state.gpList}/>,document.getElementById('calculated-widget')
+    );
   }
   render() {
     var self = this;
