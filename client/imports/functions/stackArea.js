@@ -52,7 +52,7 @@ var x = d3.scale.ordinal().rangePoints([0,width],0.5);
   var y = d3.scale.linear()
       .rangeRound([height, 0]);
 
-  var z = d3.scale.category20c();
+  var z = ["rgba(79,195,247 ,0.5)","rgba(229,57,53 ,0.5)"]
 
   var xAxis = d3.svg.axis()
       .scale(x)
@@ -93,7 +93,7 @@ var x = d3.scale.ordinal().rangePoints([0,width],0.5);
       .enter().append("path")
         .attr("class", "layer")
         .attr("d", function(d) { return area(d.values); })
-        .style("fill", function(d, i) { return z(i); });
+        .style("fill", function(d, i) { return z[i]; });
 
     svg.append("g")
         .attr("class", "x axis")
