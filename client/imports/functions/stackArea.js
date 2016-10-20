@@ -44,10 +44,10 @@ function stackArea(){
       value: Number($('#demand-2026').html())
     },];
     var margin = {top: 20, right: 30, bottom: 30, left: 100},
-      width = 700 - margin.left - margin.right,
+      width = 800 - margin.left - margin.right,
       height = 300 - margin.top - margin.bottom;
 
-  var x = d3.scale.ordinal().rangePoints([0,width],0.5);
+var x = d3.scale.ordinal().rangePoints([0,width],0.5);
 
   var y = d3.scale.linear()
       .rangeRound([height, 0]);
@@ -57,7 +57,6 @@ function stackArea(){
   var xAxis = d3.svg.axis()
       .scale(x)
       .orient("bottom")
-      .ticks(d3.time.days);
 
   var yAxis = d3.svg.axis()
       .scale(y)
@@ -76,7 +75,7 @@ function stackArea(){
       .interpolate("cardinal")
       .x(function(d) { return x(d['year']); })
       .y0(function(d) { return y(d.y0); })
-      .y1(function(d) { return y(d.y0 + d.y); });
+      .y1(function(d) { return y(d.y); });
 
   var svg = d3.select("#stack-d3").append("svg")
       .attr("width", width + margin.left + margin.right)
@@ -86,7 +85,7 @@ function stackArea(){
 
     var layers = stack(nest.entries(stackArea_array));
 
-    x.domain(d3.extent(stackArea_array, function(d) { return d['year']; }));
+    x.domain(stackArea_array.map(function(d) { return d['year']; }));
     y.domain([0, d3.max(stackArea_array, function(d) { return d.y0 + d.y; })]);
 
     svg.selectAll(".layer")

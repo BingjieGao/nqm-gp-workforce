@@ -10,7 +10,6 @@ import PyramidControl from "./pyramidControl";
 import ReactDom from "react-dom";
 import {ratingCalculator} from "../../functions/ratingCalculator";
 import {shortfallD3} from "../../functions/shortfallD3";
-import {stackArea} from "../../functions/stackArea";
 
 _=lodash;
 
@@ -97,8 +96,6 @@ _=lodash;
 
        ratingCalculator(self.state.femaleList,self.state.maleList);
        shortfallD3();
-       //stackArea();
-
      return(
        <Paper id="input-widget" zDepth={1} className="flex-items">
         <h3>Input fields </h3>

@@ -1,4 +1,4 @@
-
+import {stackArea} from "./stackArea";
 _=lodash;
 let year_array = ["2016","2018","2021","2026","2030"];
 
@@ -21,7 +21,7 @@ function shortfallD3(){
     }];
   console.log(shortfall_array);
   var margin = {top: 20, right: 20, bottom: 30, left: 100},
-    width = 1000 - margin.left - margin.right,
+    width = 800 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
     padding = width * 0.05;
 
@@ -68,6 +68,7 @@ var svg = d3.select("#shortfall-d3").append("svg")
       .attr("class", "line")
       .attr("d", line)
 
+  stackArea();
 }
 
 export {shortfallD3};

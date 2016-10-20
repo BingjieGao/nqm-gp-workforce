@@ -48,7 +48,6 @@ var currentYear = 2016;
      },function(){
        shortfallCalculator();
        shortfallD3();
-       substituteCalculator();
      });
    }
    _changeNow(event){
@@ -66,7 +65,6 @@ var currentYear = 2016;
      },function(){
        shortfallCalculator();
        shortfallD3();
-       substituteCalculator();
      })
    }
    _changeTwo(event){
@@ -84,7 +82,6 @@ var currentYear = 2016;
      },function(){
        shortfallCalculator();
        shortfallD3();
-       substituteCalculator();
      })
    }
    _changeFive(event){
@@ -102,7 +99,6 @@ var currentYear = 2016;
      },function(){
        shortfallCalculator();
        shortfallD3();
-       substituteCalculator();
      })
    }
    _changeTen(event){
@@ -120,7 +116,6 @@ var currentYear = 2016;
      },function(){
        shortfallCalculator();
        shortfallD3();
-       substituteCalculator();
      });
      console.log(this.state.gpList);
    }

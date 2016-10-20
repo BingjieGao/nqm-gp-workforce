@@ -107,12 +107,14 @@ path {
     shape-rendering: crispEdges;
 }
 #shortfall-line{
-  width:97%;
+  width:49%;
   order:2;
   -webkit-order:2;
+  padding:10px;
 }
 #stack-d3{
-  width:58%;
+  width:49%;
   order:1;
   -webkit-order:1;
+  padding:10px;
 }
