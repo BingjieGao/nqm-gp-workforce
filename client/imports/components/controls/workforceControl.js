@@ -21,19 +21,19 @@ let currentYear = 2016;
            hour:0,
            disable:true
          },{
-           name:"Locum",
+           name:"Locum gp",
            value:68.43,
            ratio:0,
            hour:0,
            disable:true
          },{
-           name:"Recep",
+           name:"Receptionist",
            value:0,
            ratio:0,
            hour:0,
            disable:false
          },{
-           name:"Phy",
+           name:"Physio",
            value:0,
            ratio:0,
            hour:0,
@@ -51,7 +51,7 @@ let currentYear = 2016;
            hour:0,
            disable:false
          },{
-           name:"SNurse",
+           name:"Senior Nurse",
            value:0,
            ratio:0,
            hour:0,
@@ -113,16 +113,7 @@ let currentYear = 2016;
                   disabled={row.disable}
                 />
               </TableRowColumn>
-             <TableRowColumn>
-               <TextField
-                 type="number"
-                 id={String(index)+"hour"}
-                 name={row.name+"hour"}
-                 value={row.hour}
-                 onChange={self._changeHours}
-                 disabled={row.disable}
-               />
-             </TableRowColumn>
+             <TableRowColumn id={String(index)+"hour"} name={row.name+"hour"}>{row.hour}</TableRowColumn>
              <TableRowColumn>
                <TextField
                  type="number"

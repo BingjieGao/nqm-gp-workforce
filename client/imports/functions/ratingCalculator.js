@@ -1,4 +1,6 @@
 import {substituteCalculator} from "./substituteCalculator";
+import {Meteor} from "meteor/meteor";
+import {fteCalculator} from "./fteCalculator";
 
 _=lodash;
 
@@ -7,13 +9,15 @@ function ratingCalculator(PyramidFemale,PyramidMale){
   let totalDemandNow = 0, totalDemandTwo = 0,totalDemandFive = 0,totalDemandTen = 0;
   let shortfallNow = 0, shortfallTwo = 0,shortfallFive = 0,shortfallTen = 0;
   let length = Meteor.settings.public.maleRatings.length;
+  let patientsNumber = 0;
   _.forEach(PyramidFemale,(row,Index) => {
     var ratingMale = Meteor.settings.public.maleRatings[length-Index-1];
     var ratingFemale = Meteor.settings.public.femaleRatings[length-Index-1];
     //console.log(PyramidMale[Index]);
+    patientsNumber += row['persons'] + PyramidMale[Index]['persons'];
     totalDemandNow += row['persons']*ratingFemale + PyramidMale[Index]['persons']*ratingMale;
   });
-  totalDemandNow = parseInt(totalDemandNow);
+  totalDemandNow = parseInt(totalDemandNow/(Meteor.settings.public.annual_leave*52));
   totalDemandTwo = totalDemandNow;
   totalDemandFive =  totalDemandNow;
   totalDemandTen = totalDemandNow;
@@ -43,6 +47,10 @@ function ratingCalculator(PyramidFemale,PyramidMale){
     shortfallFive: shortfallFive,
     shortfallTen: shortfallTen
   }
+  $("#fte-2016").html(Number($('#totalHoursNow').html())*fteCalculator(patientsNumber));
+  $("#fte-2018").html(Number($('#totalHoursTwo').html())*fteCalculator(patientsNumber));
+  $("#fte-2021").html(Number($('#totalHoursFive').html())*fteCalculator(patientsNumber));
+  $("#fte-2026").html(Number($('#totalHoursTen').html())*fteCalculator(patientsNumber));
 
   $('#demand-2016').html(ratingResult.demandNow);
   $('#demand-2018').html(ratingResult.demandTwo);
@@ -61,5 +69,6 @@ function ratingCalculator(PyramidFemale,PyramidMale){
 
   substituteCalculator();
 }
+
 
 export {ratingCalculator};

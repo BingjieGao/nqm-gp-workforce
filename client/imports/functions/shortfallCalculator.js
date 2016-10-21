@@ -1,4 +1,4 @@
-
+import {fteCalculator} from "./fteCalculator";
 import {substituteCalculator} from "./substituteCalculator";
 _=lodash;
 
@@ -25,6 +25,13 @@ function shortfallCalculator(){
   $('#cost-2018').html(parseInt(costTwo));
   $('#cost-2021').html(parseInt(costFive));
   $('#cost-2026').html(parseInt(costTen));
+
+  let fteCoefficient =   fteCalculator(null);
+
+  $("#fte-2016").html(Number($('#totalHoursNow').html())*fteCoefficient);
+  $("#fte-2018").html(Number($('#totalHoursTwo').html())*fteCoefficient);
+  $("#fte-2021").html(Number($('#totalHoursFive').html())*fteCoefficient);
+  $("#fte-2026").html(Number($('#totalHoursTen').html())*fteCoefficient);
 
   substituteCalculator();
 }

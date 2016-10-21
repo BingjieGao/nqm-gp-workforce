@@ -22,7 +22,7 @@ let currentYear = 2016;
          name:"Shortfall",
          key:"shortfall"
        },{
-         name:"Current Key",
+         name:"Current Cost",
          key:"cost"
        },{
          name:"Substitute Capacity",
@@ -33,6 +33,9 @@ let currentYear = 2016;
        },{
          name:"New Cost",
          key:"newcost"
+       },{
+         name:"FTE",
+         key:"fte"
        }
      ]
 
@@ -57,35 +60,7 @@ let currentYear = 2016;
           </TableRow>
         )
       })
-
-    let shortfalldata =
-          <TableRow selectable={false}>
-             <TableRowColumn>Shortfall</TableRowColumn>
-              <TableRowColumn id="shortfall-2016"></TableRowColumn>
-              <TableRowColumn id="shortfall-2018"></TableRowColumn>
-              <TableRowColumn id="shortfall-2021"></TableRowColumn>
-              <TableRowColumn id="shortfall-2026"></TableRowColumn>
-          </TableRow>
-          ;
-    let costdata =
-          <TableRow selectable={false}>
-             <TableRowColumn>Current Cost</TableRowColumn>
-              <TableRowColumn id="cost-2016"></TableRowColumn>
-              <TableRowColumn id="cost-2018"></TableRowColumn>
-              <TableRowColumn id="cost-2021"></TableRowColumn>
-              <TableRowColumn id="cost-2026"></TableRowColumn>
-          </TableRow>
-          ;
-    let subdata =
-          <TableRow selectable={false}>
-             <TableRowColumn>Substitute Capacity</TableRowColumn>
-              <TableRowColumn id="cost-2016"></TableRowColumn>
-              <TableRowColumn id="cost-2018"></TableRowColumn>
-              <TableRowColumn id="cost-2021"></TableRowColumn>
-              <TableRowColumn id="cost-2026"></TableRowColumn>
-          </TableRow>
-          ;
-
+      ;
      return(
        <MuiThemeProvider>
        <Paper zDepth={1}>

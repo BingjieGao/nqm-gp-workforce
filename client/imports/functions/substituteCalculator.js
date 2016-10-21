@@ -1,3 +1,4 @@
+import {Meteor} from "meteor/meteor";
 _=lodash;
 
 function substituteCalculator(){
@@ -6,16 +7,17 @@ function substituteCalculator(){
   let costNow = 0,costTwo = 0,costFive = 0,costTen= 0
   _.forEach(sub_array,function(index){
     sub_cap += Number($("#"+index+"ratio").val());
+    console.log('change full time');
+    $("#"+index+"hour").html(Number($("#"+index+"ratio").val())*Meteor.settings.public.fulltime);
   });
+
   let capNow = sub_cap*Number($("#demand-2016").html());
   let capTwo = sub_cap*Number($("#demand-2018").html());
   let capFive = sub_cap*Number($("#demand-2021").html());
   let capTen = sub_cap*Number($("#demand-2026").html());
-
-  console.log(Number($("#shortfall-2016").html()));
   let newShortfallNow = Number($("#shortfall-2016").html()) - capNow;
   let newShortfallTwo = Number($("#shortfall-2018").html()) - capTwo;
-  let newShortfallFive = Number($("#shortfall-2018").html()) - capFive;
+  let newShortfallFive = Number($("#shortfall-2021").html()) - capFive;
   let newShortfallTen = Number($("#shortfall-2026").html()) - capTen;
 
   $("#capacity-2016").html(parseInt(capNow));
