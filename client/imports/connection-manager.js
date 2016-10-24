@@ -11,7 +11,7 @@ class ConnectionManager {
     this.authenticated = new ReactiveVar(false);
     this.resourceCollection = this.datasetDataCollection = null;
     this.authToken = "";
-    this.authorise("SklzMJbZC","12345");
+    this.authorise(Meteor.settings.public.auth,Meteor.settings.public.key);
   }
   connect() {
     if (this.connected) {

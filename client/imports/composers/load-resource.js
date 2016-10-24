@@ -9,7 +9,9 @@ function loadResourceData({resourceId, filter, options}, onData) {
     accessToken: connectionManager.authToken
   };
   const api = new TDXApi(config);
+  //dummy data
   var filter = {"area_id":{"$eq":"E01023286"},"year":{"$eq":"2016"}};
+
   api.getDatasetData(resourceId, filter, null, options, (err, response) => {
     if (err) console.log("Failed to get data: ", err);
     else {
