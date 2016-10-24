@@ -106,6 +106,9 @@ let currentYear = 2016;
               <TableRowColumn>
                 <TextField
                   type="number"
+                  min="0"
+                  max="1"
+                  step="0.01"
                   id={String(index)+"ratio"}
                   name={row.name+"ratio"}
                   value={row.ratio}
@@ -134,8 +137,8 @@ let currentYear = 2016;
            <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
              <TableRow>
                <TableHeaderColumn></TableHeaderColumn>
-               <TableHeaderColumn>%Activity</TableHeaderColumn>
-               <TableHeaderColumn>FullTime</TableHeaderColumn>
+               <TableHeaderColumn>%Activity(%)</TableHeaderColumn>
+               <TableHeaderColumn>FullTime(Hours)</TableHeaderColumn>
                <TableHeaderColumn>£ Per Hour</TableHeaderColumn>
              </TableRow>
            </TableHeader>

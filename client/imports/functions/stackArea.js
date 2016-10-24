@@ -44,7 +44,7 @@ function stackArea(){
       value: Number($('#demand-2026').html())
     },];
     var margin = {top: 20, right: 30, bottom: 30, left: 100},
-      width = 800 - margin.left - margin.right,
+      width = 600 - margin.left - margin.right,
       height = 300 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal().rangePoints([0,width],0.5);
@@ -52,7 +52,7 @@ var x = d3.scale.ordinal().rangePoints([0,width],0.5);
   var y = d3.scale.linear()
       .rangeRound([height, 0]);
 
-  var z = ["rgba(79,195,247 ,0.5)","rgba(229,57,53 ,0.5)"]
+  var z = ["rgba(124, 181, 236, 0.3)","rgba(247, 163, 92, 0.3)"]
 
   var xAxis = d3.svg.axis()
       .scale(x)

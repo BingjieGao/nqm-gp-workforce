@@ -21,7 +21,7 @@ function shortfallD3(){
     }];
   console.log(shortfall_array);
   var margin = {top: 20, right: 20, bottom: 30, left: 100},
-    width = 800 - margin.left - margin.right,
+    width = 600 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
     padding = width * 0.05;
 
@@ -46,7 +46,7 @@ var svg = d3.select("#shortfall-d3").append("svg")
 
   var line = d3.svg.line()
       .x(function(d,i) { return x(d['year']); })
-      .y(function(d,i) { console.log(y(d['shortfall'])); return y(d['shortfall']); });
+      .y(function(d,i) { return y(d['shortfall']); });
 
   svg.append("g")
       .attr("class", "x axis")

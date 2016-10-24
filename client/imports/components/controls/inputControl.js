@@ -92,7 +92,6 @@ _=lodash;
               />
          )
        })
-       console.log(this.renderYAxis());
 
        ratingCalculator(self.state.femaleList,self.state.maleList);
        shortfallD3();

@@ -28,7 +28,6 @@ function ratingCalculator(PyramidFemale,PyramidMale){
   shortfallTen = -Number($('#totalHoursTen').html())+totalDemandTen;
 
 
-  console.log($("#0cost").val());
   var GPcost = Number($("#0cost").val());
   var Locumcost = Number($("#1cost").val());
 
@@ -47,10 +46,10 @@ function ratingCalculator(PyramidFemale,PyramidMale){
     shortfallFive: shortfallFive,
     shortfallTen: shortfallTen
   }
-  $("#fte-2016").html(Number($('#totalHoursNow').html())*fteCalculator(patientsNumber));
-  $("#fte-2018").html(Number($('#totalHoursTwo').html())*fteCalculator(patientsNumber));
-  $("#fte-2021").html(Number($('#totalHoursFive').html())*fteCalculator(patientsNumber));
-  $("#fte-2026").html(Number($('#totalHoursTen').html())*fteCalculator(patientsNumber));
+  $("#fte-2016").html(Number($('#totalHoursNow').html())*fteCalculator(patientsNumber).toFixed(2));
+  $("#fte-2018").html(Number($('#totalHoursTwo').html())*fteCalculator(patientsNumber).toFixed(2));
+  $("#fte-2021").html(Number($('#totalHoursFive').html())*fteCalculator(patientsNumber).toFixed(2));
+  $("#fte-2026").html(Number($('#totalHoursTen').html())*fteCalculator(patientsNumber).toFixed(2));
 
   $('#demand-2016').html(ratingResult.demandNow);
   $('#demand-2018').html(ratingResult.demandTwo);

@@ -93,7 +93,7 @@ vertical-align: middle;
 }
 
 /*D3 path*/
-path {
+#shortfall-d3 path.line {
     stroke: steelblue;
     stroke-width: 2;
     fill: none;
@@ -105,6 +105,9 @@ path {
     stroke: grey;
     stroke-width: 1;
     shape-rendering: crispEdges;
+}
+.layer path{
+  stroke: transparent;
 }
 #shortfall-line{
   width:49%;

@@ -7,8 +7,7 @@ function substituteCalculator(){
   let costNow = 0,costTwo = 0,costFive = 0,costTen= 0
   _.forEach(sub_array,function(index){
     sub_cap += Number($("#"+index+"ratio").val());
-    console.log('change full time');
-    $("#"+index+"hour").html(Number($("#"+index+"ratio").val())*Meteor.settings.public.fulltime);
+    $("#"+index+"hour").html((Number($("#"+index+"ratio").val())*Meteor.settings.public.fulltime).toFixed(2));
   });
 
   let capNow = sub_cap*Number($("#demand-2016").html());
@@ -25,10 +24,10 @@ function substituteCalculator(){
   $("#capacity-2021").html(parseInt(capFive));
   $("#capacity-2026").html(parseInt(capTen));
 
-  $("#newshortfall-2016").html(newShortfallNow);
-  $("#newshortfall-2018").html(newShortfallTwo);
-  $("#newshortfall-2021").html(newShortfallFive);
-  $("#newshortfall-2026").html(newShortfallTen);
+  $("#newshortfall-2016").html(parseInt(newShortfallNow));
+  $("#newshortfall-2018").html(parseInt(newShortfallTwo));
+  $("#newshortfall-2021").html(parseInt(newShortfallFive));
+  $("#newshortfall-2026").html(parseInt(newShortfallTen));
 
   _.forEach(sub_array,function(index){
     costNow += Number($("#"+index+"ratio").val())*Number($("#demand-2016").html())*Number($("#"+index+"cost").val());
