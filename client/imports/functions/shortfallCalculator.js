@@ -1,5 +1,5 @@
-import {fteCalculator} from "./fteCalculator";
 import {substituteCalculator} from "./substituteCalculator";
+import {fteCalculator} from "./fteCalculator";
 _=lodash;
 
 function shortfallCalculator(){
