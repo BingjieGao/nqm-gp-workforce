@@ -7,7 +7,7 @@ function loadTableData({tableId,tablename},onData){
   var data = [
     {
       _id:1,
-      name:"First GP",
+      name:"Dr Bhasker Dave",
       age:30,
       gender:'male',
       hours:{
@@ -19,7 +19,7 @@ function loadTableData({tableId,tablename},onData){
     },
     {
       _id:2,
-      name:"Second GP",
+      name:"Dr Hemi Bhatt",
       age:40,
       gender:'male',
       hours:{

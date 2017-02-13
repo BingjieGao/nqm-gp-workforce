@@ -22,7 +22,7 @@ function shortfallD3(){
   console.log(shortfall_array);
   var margin = {top: 20, right: 20, bottom: 30, left: 100},
     width = 600 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+    height = 400 - margin.top - margin.bottom;
     padding = width * 0.05;
 
 var x = d3.scale.ordinal().rangePoints([0,width],0.5);

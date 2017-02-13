@@ -95,8 +95,11 @@ _=lodash;
 
        ratingCalculator(self.state.femaleList,self.state.maleList);
        shortfallD3();
+       let style = {
+         height:"834px"
+       }
      return(
-       <Paper id="input-widget" zDepth={1} className="flex-items">
+       <Paper id="input-widget" zDepth={1} className="flex-items" style={style}>
         <h3>Input fields </h3>
         <div className="input-container">
           <div className="input-itmes" id="male-inputs">

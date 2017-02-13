@@ -219,7 +219,7 @@ class PyramidDisplay extends Component {
       }
     };
     return (
-      <div className="flex-container">
+      <div className="calculated-container">
         <Paper zDepth={1} id="pyramid-widget" className="flex-items">
           <div style={styles.root}>
             <svg id={"pyramid" + this.props.wgtId}></svg>

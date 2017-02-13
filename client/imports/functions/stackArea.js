@@ -44,8 +44,8 @@ function stackArea(){
       value: Number($('#demand-2026').html())
     },];
     var margin = {top: 20, right: 30, bottom: 30, left: 100},
-      width = 600 - margin.left - margin.right,
-      height = 300 - margin.top - margin.bottom;
+      width = 550 - margin.left - margin.right,
+      height = 400 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal().rangePoints([0,width],0.5);
 

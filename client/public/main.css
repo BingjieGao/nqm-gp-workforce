@@ -60,15 +60,18 @@ vertical-align: middle;
   order:2;
 }
 #pyramid-widget{
-  width:50%;
+  width:60%;
   order:1;
   -webkit-order:1;
+  padding-top:10%;
+  padding-bottom:10%;
 }
 #input-widget{
-  padding:10px;
-  width: 45%;
+  width: calc(40% - 10px);
   order:2;
   -webkit-order:2;
+  padding:10px;
+  overflow-y: scroll;
 }
 #male-inputs{
   width:40%;
@@ -97,6 +100,7 @@ vertical-align: middle;
     stroke: steelblue;
     stroke-width: 2;
     fill: none;
+
 }
 
 .axis path,
@@ -110,14 +114,14 @@ vertical-align: middle;
   stroke: transparent;
 }
 #shortfall-line{
-  width:49%;
+  width:50%;
   order:2;
   -webkit-order:2;
-  padding:10px;
+  padding:1px;
 }
 #stack-d3{
-  width:49%;
+  width:25%;
   order:1;
   -webkit-order:1;
-  padding:10px;
+  padding:1px;
 }

@@ -25,7 +25,7 @@ class VisualExplorer extends Component {
               female={true}
               year="2016"
               popletDatasetId="S1guBVt70"
-              width={width*0.49}
+              width={width*0.4}
               height={width*0.4}
             />
   }

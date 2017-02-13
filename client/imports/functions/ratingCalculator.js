@@ -17,7 +17,7 @@ function ratingCalculator(PyramidFemale,PyramidMale){
     patientsNumber += row['persons'] + PyramidMale[Index]['persons'];
     totalDemandNow += row['persons']*ratingFemale + PyramidMale[Index]['persons']*ratingMale;
   });
-  totalDemandNow = parseInt(totalDemandNow/(Meteor.settings.public.annual_leave*52));
+  totalDemandNow = parseInt(totalDemandNow/(Meteor.settings.public.annual_leave));
   totalDemandTwo = totalDemandNow;
   totalDemandFive =  totalDemandNow;
   totalDemandTen = totalDemandNow;
@@ -46,10 +46,10 @@ function ratingCalculator(PyramidFemale,PyramidMale){
     shortfallFive: shortfallFive,
     shortfallTen: shortfallTen
   }
-  $("#fte-2016").html(Number($('#totalHoursNow').html())*fteCalculator(patientsNumber).toFixed(2));
-  $("#fte-2018").html(Number($('#totalHoursTwo').html())*fteCalculator(patientsNumber).toFixed(2));
-  $("#fte-2021").html(Number($('#totalHoursFive').html())*fteCalculator(patientsNumber).toFixed(2));
-  $("#fte-2026").html(Number($('#totalHoursTen').html())*fteCalculator(patientsNumber).toFixed(2));
+  $("#fte-2016").html(Number($('#totalHoursNow').html())*fteCalculator(patientsNumber).toFixed(2)/52);
+  $("#fte-2018").html(Number($('#totalHoursTwo').html())*fteCalculator(patientsNumber).toFixed(2)/52);
+  $("#fte-2021").html(Number($('#totalHoursFive').html())*fteCalculator(patientsNumber).toFixed(2)/52);
+  $("#fte-2026").html(Number($('#totalHoursTen').html())*fteCalculator(patientsNumber).toFixed(2)/52);
 
   $('#demand-2016').html(ratingResult.demandNow);
   $('#demand-2018').html(ratingResult.demandTwo);
